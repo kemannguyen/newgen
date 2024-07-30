@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/NavigationLayer.css";
 import { useNavigate } from "react-router-dom";
+import basketicon from "../images/basket-icon.png";
 
 const NavigationLayer = ({ openMenu }) => {
   const navigate = useNavigate();
@@ -29,6 +30,11 @@ const NavigationLayer = ({ openMenu }) => {
     navigate("/contact-us");
     openMenu(false);
   };
+  const ToBasket = () => {
+    window.scrollTo(0, 0);
+    navigate("/basket");
+    openMenu(false);
+  };
 
   return (
     <div className="bg-layercover">
@@ -48,6 +54,10 @@ const NavigationLayer = ({ openMenu }) => {
         <p className="navmenu-btn" onClick={ToContactUs}>
           Contact Us
         </p>
+        <div className="cartnumball">
+          <div className="cartnumlayer">0</div>
+        </div>
+        <img className="cartlayer" src={basketicon} onClick={ToBasket}/>
       </div>
     </div>
   );
