@@ -54,7 +54,7 @@ const Header = () => {
     window.scrollTo(0, 0);
     navigate("/");
     if (tabindex !== 0) {
-      window.location.reload();
+      //window.location.reload();
     }
   };
 
