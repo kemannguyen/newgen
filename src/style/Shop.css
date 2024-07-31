@@ -1,5 +1,39 @@
-.fullscreen{
-    width: 100vw;
-    height: 50vw;
-    min-height: 300px;
+.fullscreen {
+  width: 100vw;
+  height: 50vw;
+  min-height: 300px;
+}
+
+.shopping-page {
+  flex-grow: 1;
+  padding: 20px;
+  margin-left: 200px;
+}
+
+.clothing-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  margin: 0 5px;
+  padding: 10px 15px;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.pagination button.active,
+.pagination button:hover {
+  background-color: #333;
+  color: #fff;
 }

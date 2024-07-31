@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import NavigationLayer from "./NavigationLayer";
 import xicon from "../images/x-icon1.png";
 import icon from "../images/menu-icon1.png";
+import ngicon from "../images/ngicon.png";
 import basketicon from "../images/basket-icon.png";
 
 const Header = () => {
-  var pathname = window.location.pathname;
+  const path = window.location.pathname.split("/");
+  var pathname = "/" + path[1];
 
+  console.log(pathname);
   const [menu, setMenu] = useState(false);
   const openMenu = () => setMenu(!menu);
   const [tabindex, setindex] = useState(0);
@@ -154,7 +157,7 @@ const Header = () => {
   }
 
   let basketbtn;
-  if (tabindex === 4) {
+  if (tabindex === 5) {
     basketbtn = (
       <span className="navbtn-active" onClick={ToBasket}>
         {" "}

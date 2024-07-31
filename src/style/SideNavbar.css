@@ -1,0 +1,40 @@
+.side-navbar {
+  position: fixed;
+  top: 80px;
+  width: 150px;
+  background: #eaeaea;
+  padding: 20px;
+  height: 100%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.side-navbar h2 {
+  margin-top: 0;
+}
+
+.side-navbar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.side-navbar ul li {
+  margin: 10px 0;
+}
+
+.side-navbar ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.side-navbar ul li a:hover,
+.side-navbar ul li a.active {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.hidden {
+  visibility: hidden;
+}
+.visable {
+  visibility: visible;
+}
