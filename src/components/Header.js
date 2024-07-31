@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import NavigationLayer from "./NavigationLayer";
 import xicon from "../images/x-icon1.png";
 import icon from "../images/menu-icon1.png";
-import ngicon from "../images/ngicon.png";
 import basketicon from "../images/basket-icon.png";
 
 const Header = () => {
@@ -28,11 +27,8 @@ const Header = () => {
       case "/about-us":
         setindex(3);
         break;
-      case "/contact-us":
-        setindex(4);
-        break;
       case "/basket":
-        setindex(5);
+        setindex(4);
         break;
       default:
         break;
@@ -71,11 +67,6 @@ const Header = () => {
   const ToAbtUs = () => {
     window.scrollTo(0, 0);
     navigate("/about-us");
-  };
-
-  const ToContactUs = () => {
-    window.scrollTo(0, 0);
-    navigate("/contact-us");
   };
 
   const ToBasket = () => {
@@ -162,25 +153,8 @@ const Header = () => {
     );
   }
 
-  let contactusbtn;
-  if (tabindex === 4) {
-    contactusbtn = (
-      <span className="navbtn-active" onClick={ToContactUs}>
-        {" "}
-        contact us
-      </span>
-    );
-  } else {
-    contactusbtn = (
-      <span className="navbtn" onClick={ToContactUs}>
-        {" "}
-        contact us
-      </span>
-    );
-  }
-
   let basketbtn;
-  if (tabindex === 5) {
+  if (tabindex === 4) {
     basketbtn = (
       <span className="navbtn-active" onClick={ToBasket}>
         {" "}
@@ -220,7 +194,6 @@ const Header = () => {
         {shopbtn}
         {ootdbtn}
         {abtusbtn}
-        {contactusbtn}
       </div>
       <div className="cartimg">{basketbtn}</div>
       <div className="cart">

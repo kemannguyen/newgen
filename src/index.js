@@ -5,13 +5,13 @@ import Header from "./components/Header";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 
 const images = [
+  "https://drive.google.com/thumbnail?id=1Z5poGhDEscqZuGMT35OOh4p1rzSzB_PS&sz=w1920",
   "https://drive.google.com/thumbnail?id=1OpU4lLrxSjRXXIBHOr1oafP81VlllBnK&sz=w1920",
-  "https://drive.google.com/thumbnail?id=1b2SZXhtMjVTCwnlNua_8hbSCGt5cALB8&sz=w1920",
-  "https://drive.google.com/thumbnail?id=11WSUd8-cjq_RmXK0YK-QhlGZ2ycxP8o8&sz=w1920",
-  "https://drive.google.com/thumbnail?id=10P_vEyhCE-K2892V6RD-L-KC6lVfOieB&sz=w1920",
+  "https://drive.google.com/thumbnail?id=1ytHhVRZR6rAyL335kYbo2209h7Hhmmcr&sz=w1920",
+  "https://drive.google.com/thumbnail?id=1iEI41bIEvuJPL5qQjF0U63pFvQxK0yio&sz=w1920",
 ];
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -22,6 +22,10 @@ root.render(
       <Routes>
         <Route path="/" element={<Home images={images} interval={8000} />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/outfit-of-the-day" element={<Shop />} />
+        <Route path="/about-us" element={<Shop />} />
+        <Route path="/basket" element={<Shop />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </React.StrictMode>
   </BrowserRouter>
