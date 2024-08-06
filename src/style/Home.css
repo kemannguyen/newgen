@@ -29,6 +29,7 @@
   width: 100%;
   display: block;
   max-height: 100vh;
+  min-height: 50vw;
 }
 
 .prev,

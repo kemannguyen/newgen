@@ -12,7 +12,7 @@ const NavigationLayer = ({ openMenu }) => {
   };
   const ToMenu = () => {
     window.scrollTo(0, 0);
-    navigate("/meny");
+    navigate("/shop");
     openMenu(false);
   };
   const ToAbtUs = () => {
@@ -23,11 +23,6 @@ const NavigationLayer = ({ openMenu }) => {
   const ToOOTD = () => {
     window.scrollTo(0, 0);
     navigate("/outfit-of-the-day");
-    openMenu(false);
-  };
-  const ToContactUs = () => {
-    window.scrollTo(0, 0);
-    navigate("/contact-us");
     openMenu(false);
   };
   const ToBasket = () => {
@@ -51,13 +46,10 @@ const NavigationLayer = ({ openMenu }) => {
         <p className="navmenu-btn" onClick={ToAbtUs}>
           About us
         </p>
-        <p className="navmenu-btn" onClick={ToContactUs}>
-          Contact Us
-        </p>
         <div className="cartnumball">
           <div className="cartnumlayer">0</div>
         </div>
-        <img className="cartlayer" src={basketicon} onClick={ToBasket}/>
+        <img className="cartlayer" src={basketicon} onClick={ToBasket} />
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../style/SideNavbar.css";
 
-const SideNavbar = ({ categories, selectedCategory, onCategoryChange }) => {
+const SideNavbar = ({ categories, onCategoryChange }) => {
   const location = useLocation();
   const [inShop, setInShop] = useState(false);
 
@@ -14,6 +14,9 @@ const SideNavbar = ({ categories, selectedCategory, onCategoryChange }) => {
     } else {
       setInShop(false);
     }
+    let temppatharr = location.pathname.split("/");
+    let tempcategory = temppatharr[3];
+    onCategoryChange(tempcategory);
   }, [location.pathname]);
 
   return (
@@ -35,7 +38,7 @@ const SideNavbar = ({ categories, selectedCategory, onCategoryChange }) => {
               <Link
                 to={`shop/category/${category}`}
                 className={
-                  location.pathname === `shop/category/${category}`
+                  location.pathname === `/shop/category/${category}`
                     ? "active"
                     : ""
                 }

@@ -1,21 +1,44 @@
 // src/components/ShoppingPage.js
 import React, { useState, useEffect } from "react";
-import clothingData from "../data/clothingData";
+import { Link } from "react-router-dom";
 import ClothingItem from "./ClothingItem";
 import "../style/Shop.css";
+import { firebaseApp } from "../firebase-config";
+import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 
-const Shop = ({ selectedCategory }) => {
+const Shop = ({ selectedCategory, onSelectedItemChange }) => {
   const itemsPerPage = 16;
   const [currentPage, setCurrentPage] = useState(1);
+  const [citems, setcItems] = useState([]);
+
+  const db = getFirestore(firebaseApp);
+
+  const q = query(collection(db, "items"));
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const querySnapshot = await getDocs(q);
+      setcItems(
+        querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+        }))
+      );
+    };
+    fetchData();
+  }, []);
+
+  //replace depending in db
+  console.log("cdata", citems);
 
   const filteredClothing = selectedCategory
-    ? clothingData.filter((item) => item.category === selectedCategory)
-    : clothingData;
+    ? citems.filter((item) => item.Category === selectedCategory)
+    : citems;
 
   const totalPages = Math.ceil(filteredClothing.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+    window.scrollTo({ top: 0 });
   };
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -28,7 +51,13 @@ const Shop = ({ selectedCategory }) => {
     <div className="shopping-page margintop80">
       <div className="clothing-list">
         {selectedItems.map((item) => (
-          <ClothingItem key={item.id} item={item} />
+          <Link
+            key={item.ID}
+            to={`/shop/item/${item.ID}`}
+            onClick={() => onSelectedItemChange(item)}
+          >
+            <ClothingItem key={item.ID} item={item} />
+          </Link>
         ))}
       </div>
       {totalPages > 1 && (

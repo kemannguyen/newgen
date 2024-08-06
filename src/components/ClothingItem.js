@@ -1,16 +1,18 @@
 // src/components/ClothingItem.js
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const ClothingItem = ({ item }) => {
   //remove category later, only here
+
   return (
     <div className="clothing-item">
-      <img src={item.imageUrl} alt={item.name} className="clothing-image" />
-      <span className="item-title">{item.name}</span>
+      <img src={item.Image} alt={item.Name} className="clothing-image" />
+      <span className="item-title">{item.Name}</span>
       {/*<p>Category: {item.category}</p>*/}
       <br></br>
-      <span>{item.description}</span>
-      <p className="item-price">${item.price}</p>
+      <span>{item.Description}</span>
+      <p className="item-price">${item.Price}</p>
     </div>
   );
 };
