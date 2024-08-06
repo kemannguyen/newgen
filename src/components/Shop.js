@@ -52,6 +52,7 @@ const Shop = ({ selectedCategory, onSelectedItemChange }) => {
       <div className="clothing-list">
         {selectedItems.map((item) => (
           <Link
+            className="link"
             key={item.ID}
             to={`/shop/item/${item.ID}`}
             onClick={() => onSelectedItemChange(item)}

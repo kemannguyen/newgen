@@ -38,6 +38,11 @@ nav a {
 .item-title {
   font-weight: bolder;
   font-size: large;
+  color: black;
+}
+.link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
 }
 .item-price {
 }

@@ -24,7 +24,7 @@ const App = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const categories = ["tops", "bottoms", "hoodies", "outerwear", "accessories"];
   const [selectedItem, setSelectedItem] = useState();
-
+  
   const handleCategoryChange = (category) => {
     setSelectedCategory(category);
   };
