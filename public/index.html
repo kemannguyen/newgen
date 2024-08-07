@@ -40,4 +40,9 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    window.addEventListener('beforeunload', function() {
+      localStorage.clear();  // This will clear the local storage
+    });
+  </script>
 </html>
