@@ -35,16 +35,42 @@ nav a {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 }
+
 .item-title {
   font-weight: bolder;
   font-size: large;
   color: black;
 }
+
+@media (max-width: 830px) {
+  .clothing-item {
+    width: 150px;
+    font-size: small;
+    min-height: 230px;
+  }
+  .item-title {
+    font-weight: bolder;
+    font-size: small;
+    color: black;
+  }
+}
+
+@media (pointer: coarse) {
+  .clothing-item {
+    width: 100px;
+    font-size: xx-small;
+    min-height: 160px;
+  }
+  .item-title {
+    font-weight: bolder;
+    font-size: x-small;
+    color: black;
+  }
+}
+
 .link {
   text-decoration: none;
   color: rgb(0, 0, 0);
-}
-.item-price {
 }
 
 .clothing-image {

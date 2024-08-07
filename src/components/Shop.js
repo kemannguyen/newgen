@@ -6,7 +6,7 @@ import "../style/Shop.css";
 import { firebaseApp } from "../firebase-config";
 import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 
-const Shop = ({ selectedCategory, onSelectedItemChange }) => {
+const Shop = ({ selectedCategory }) => {
   const itemsPerPage = 16;
   const [currentPage, setCurrentPage] = useState(1);
   const [citems, setcItems] = useState([]);
@@ -17,12 +17,17 @@ const Shop = ({ selectedCategory, onSelectedItemChange }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const querySnapshot = await getDocs(q);
-      setcItems(
-        querySnapshot.docs.map((doc) => ({
-          ...doc.data(),
-        }))
-      );
+      const localStorageItems = localStorage.getItem("clothingItems");
+      if (localStorageItems) {
+        setcItems(JSON.parse(localStorageItems));
+        console.log("local storage");
+      } else {
+        const querySnapshot = await getDocs(q);
+        const items = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+        setcItems(items);
+        localStorage.setItem("clothingItems", JSON.stringify(items));
+        console.log("fetch");
+      }
     };
     fetchData();
   }, []);
@@ -51,12 +56,7 @@ const Shop = ({ selectedCategory, onSelectedItemChange }) => {
     <div className="shopping-page margintop80">
       <div className="clothing-list">
         {selectedItems.map((item) => (
-          <Link
-            className="link"
-            key={item.ID}
-            to={`/shop/item/${item.ID}`}
-            onClick={() => onSelectedItemChange(item)}
-          >
+          <Link className="link" key={item.ID} to={`/shop/item/${item.ID}`}>
             <ClothingItem key={item.ID} item={item} />
           </Link>
         ))}

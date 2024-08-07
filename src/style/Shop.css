@@ -10,6 +10,17 @@
   margin-left: 200px;
 }
 
+@media (max-width: 830px) {
+  .shopping-page {
+    margin-left: 150px;
+  }
+}
+@media (pointer: coarse) {
+  .shopping-page {
+    margin-left: 100px;
+  }
+}
+
 .clothing-list {
   display: flex;
   flex-wrap: wrap;
