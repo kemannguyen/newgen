@@ -75,6 +75,11 @@ function ItemPage() {
   if (citems.length > 0) {
     item = citems.find((item) => item.ID.toString() === itemID);
   }
+  let array = sizes;
+  const sortedArray = array.sort((a, b) => {
+    const order = { S: 1, M: 2, L: 3 };
+    return order[a.Size] - order[b.Size];
+  });
 
   if (!item)
     return <div className="margintop100 marginleft80 ">Item not found!</div>;
@@ -88,15 +93,25 @@ function ItemPage() {
         <img className="item-image" src={item.Image} alt="" />
         <div className="item-body">
           <div className="item-body-l">
+            <p>{item.Name} </p>
             <p>${item.Price}</p>
-            {sizes.map((itemsize) => (
-              <div key={itemsize.ID + itemsize.Size}>
-                {itemsize.Size} : {itemsize.Amount} left in stock
-              </div>
-            ))}
+            <div className="sizes-layout">
+              {sortedArray.map((itemsize) => {
+                if (itemsize.ID.toString() === itemID) {
+                  return (
+                    <div
+                      className="size-layout"
+                      key={itemsize.ID + itemsize.Size}
+                    >
+                      {itemsize.Size}
+                      {itemsize.Amount}
+                    </div>
+                  );
+                }
+              })}
+            </div>
           </div>
           <div className="item-body-r">
-            <p>{item.Name} </p>
             <p>{item.Description} item desc</p>
           </div>
         </div>
