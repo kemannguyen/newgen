@@ -17,23 +17,23 @@ const Shop = ({ selectedCategory }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const localStorageItems = localStorage.getItem("clothingItems");
-      if (localStorageItems) {
-        setcItems(JSON.parse(localStorageItems));
-        console.log("local storage");
+      const sessionStorageItems = sessionStorage.getItem("clothingItems");
+      if (sessionStorageItems) {
+        setcItems(JSON.parse(sessionStorageItems));
+        console.log("session storage all");
       } else {
         const querySnapshot = await getDocs(q);
         const items = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
         setcItems(items);
-        localStorage.setItem("clothingItems", JSON.stringify(items));
-        console.log("fetch");
+        sessionStorage.setItem("clothingItems", JSON.stringify(items));
+        console.log("fetch all");
       }
     };
     fetchData();
   }, []);
 
   //replace depending in db
-  console.log("cdata", citems);
+  //console.log("cdata", citems);
 
   const filteredClothing = selectedCategory
     ? citems.filter((item) => item.Category === selectedCategory)
