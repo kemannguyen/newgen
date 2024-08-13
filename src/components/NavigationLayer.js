@@ -22,7 +22,7 @@ const NavigationLayer = ({ openMenu }) => {
   };
   const ToOOTD = () => {
     window.scrollTo(0, 0);
-    navigate("/outfit-of-the-day");
+    navigate("/outfit-highlights");
     openMenu(false);
   };
   const ToBasket = () => {
@@ -41,7 +41,7 @@ const NavigationLayer = ({ openMenu }) => {
           Shop
         </p>
         <p className="navmenu-btn" onClick={ToOOTD}>
-          Outfit of the day
+          Outfit highlights
         </p>
         <p className="navmenu-btn" onClick={ToAbtUs}>
           About us
@@ -49,7 +49,7 @@ const NavigationLayer = ({ openMenu }) => {
         <div className="cartnumball">
           <div className="cartnumlayer">0</div>
         </div>
-        <img className="cartlayer" src={basketicon} onClick={ToBasket} />
+        <img className="cartlayer" src={basketicon} onClick={ToBasket} alt="" />
       </div>
     </div>
   );

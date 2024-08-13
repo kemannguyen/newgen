@@ -60,14 +60,37 @@
 }
 
 .size-layout.active {
+  background-color: #979797;
 }
 .size-layout.disabled {
+  background-color: #ffffff;
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .size-layout:hover {
   background-color: #eeeeee;
   outline-width: 2px;
   font-size: large;
+}
+
+.btn {
+  background-color: #303030;
+  color: #eeeeee;
+  font-size: larger;
+  font-weight: bolder;
+  width: 95%;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
+
+.btn:hover {
+  background-color: #606060;
+}
+
+.btn.disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 @media (max-width: 830px) {

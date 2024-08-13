@@ -6,15 +6,19 @@ import xicon from "../images/x-icon1.png";
 import icon from "../images/menu-icon1.png";
 import ngicon from "../images/ngicon.png";
 import basketicon from "../images/basket-icon.png";
+import useLocalStorageItemCount from "./useLocalStorageItemCount";
 
 const Header = () => {
   const path = window.location.pathname.split("/");
   var pathname = "/" + path[1];
 
+  const key = "myBasket";
+
   console.log(pathname);
   const [menu, setMenu] = useState(false);
   const openMenu = () => setMenu(!menu);
   const [tabindex, setindex] = useState(0);
+  const itemCount = useLocalStorageItemCount("myBasket");
 
   useEffect(() => {
     switch (pathname) {
@@ -127,14 +131,14 @@ const Header = () => {
     ootdbtn = (
       <span className="navbtn-active" onClick={ToOOTD}>
         {" "}
-        outfit of the day
+        outfit highlights
       </span>
     );
   } else {
     ootdbtn = (
       <span className="navbtn" onClick={ToOOTD}>
         {" "}
-        outfit of the day
+        outfit highlights
       </span>
     );
   }
@@ -200,7 +204,7 @@ const Header = () => {
       </div>
       <div className="cartimg">{basketbtn}</div>
       <div className="cart">
-        <div className="cartnum">0</div>
+        <div className="cartnum">{itemCount}</div>
       </div>
 
       <img

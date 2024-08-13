@@ -54,7 +54,7 @@ const App = () => {
           />
           <Route path="/shop/item/*" element={<ItemPage />} />
 
-          <Route path="/outfit-of-the-day" element={""} />
+          <Route path="/outfit-highlights" element={""} />
           <Route path="/about-us" element={""} />
           <Route path="/basket" element={""} />
           <Route path="*" element={<Navigate to="/" />} />
