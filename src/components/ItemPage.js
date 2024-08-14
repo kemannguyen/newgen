@@ -18,10 +18,13 @@ function ItemPage() {
   const [itemID, setitemID] = useState();
   const [sizes, setItemSizes] = useState([]);
   const [selectedSize, setSelectedSize] = useState();
+
   const patharr = location.pathname.split("/");
 
   const [snackbarVisible, setSnackbarVisible] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  let basketItemKey = 0;
 
   const showSnackbar = (message) => {
     setSnackbarMessage(message);
@@ -40,6 +43,8 @@ function ItemPage() {
 
   const db = getFirestore(firebaseApp);
 
+  const qi = query(collection(db, "items"));
+
   const q = query(
     collection(db, "itemsinstock"),
     where("ID", "==", parseInt(patharr[3]))
@@ -51,7 +56,7 @@ function ItemPage() {
       if (sessionStorageItems) {
         setcItems(JSON.parse(sessionStorageItems));
       } else {
-        const querySnapshot = await getDocs(q);
+        const querySnapshot = await getDocs(qi);
         const items = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
         setcItems(items);
         sessionStorage.setItem("clothingItems", JSON.stringify(items));
@@ -133,8 +138,10 @@ function ItemPage() {
             ) {
               duplicateCount++;
             }
+            console.log(i + 1);
           }
-          console.log(key, parsedItem);
+          console.log("LENGTH", parsedItem.length);
+          basketItemKey = parsedItem.length;
         } catch (error) {
           console.log(`Could not parse item with key ${key}: `, error);
         }
@@ -151,7 +158,11 @@ function ItemPage() {
     if (tempItem.Amount - duplicateCount >= 0) {
       const addedItem = {
         ID: itemID,
+        Name: item.Name,
         Size: selectedSize,
+        ImgUrl: item.Image,
+        Price: item.Price,
+        ItemKey: basketItemKey,
       };
 
       dataArray.push(addedItem);

@@ -12,6 +12,7 @@ import Shop from "./components/Shop";
 import SideNavbar from "./components/SideNavbar";
 import clothingData from "./data/clothingData";
 import ItemPage from "./components/ItemPage";
+import Basket from "./components/Basket";
 
 const App = () => {
   const images = [
@@ -56,7 +57,7 @@ const App = () => {
 
           <Route path="/outfit-highlights" element={""} />
           <Route path="/about-us" element={""} />
-          <Route path="/basket" element={""} />
+          <Route path="/basket" element={<Basket />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>

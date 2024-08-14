@@ -106,6 +106,11 @@
     width: 10px;
     margin: 5px;
   }
+  .size-layout:hover {
+    background-color: #eeeeee;
+    outline-width: 2px;
+    font-size: x-small;
+  }
   .item-body-l {
     padding-right: 20px;
     padding-left: 10px;
@@ -122,6 +127,6 @@
   .size-layout:hover {
     background-color: #eeeeee;
     outline-width: 2px;
-    font-size: medium;
+    font-size: x-small;
   }
 }
