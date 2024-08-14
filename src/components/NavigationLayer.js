@@ -2,9 +2,12 @@ import React from "react";
 import "../style/NavigationLayer.css";
 import { useNavigate } from "react-router-dom";
 import basketicon from "../images/basket-icon.png";
+import useLocalStorageItemCount from "./useLocalStorageItemCount";
 
 const NavigationLayer = ({ openMenu }) => {
   const navigate = useNavigate();
+  const itemCount = useLocalStorageItemCount("myBasket");
+
   const ToHome = () => {
     window.scrollTo(0, 0);
     navigate("/");
@@ -47,7 +50,7 @@ const NavigationLayer = ({ openMenu }) => {
           About us
         </p>
         <div className="cartnumball">
-          <div className="cartnumlayer">0</div>
+          <div className="cartnumlayer">{itemCount}</div>
         </div>
         <img className="cartlayer" src={basketicon} onClick={ToBasket} alt="" />
       </div>

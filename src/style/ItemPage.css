@@ -114,3 +114,14 @@
     flex-wrap: wrap;
   }
 }
+
+@media (pointer: coarse) {
+  .marginleft {
+    margin-left: 120px;
+  }
+  .size-layout:hover {
+    background-color: #eeeeee;
+    outline-width: 2px;
+    font-size: medium;
+  }
+}
