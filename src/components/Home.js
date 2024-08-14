@@ -45,7 +45,7 @@ const Home = ({ images, interval = 8000 }) => {
         >
           {images.map((image, index) => (
             <div className="slide" key={index}>
-              <img src={image} alt={`Slide ${index}`} />
+              <img src={image} alt="loading.." />
             </div>
           ))}
         </div>
