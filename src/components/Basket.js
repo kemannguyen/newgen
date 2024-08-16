@@ -90,8 +90,11 @@ function Basket() {
   }, []);
 
   // Function to remove an item from the basket
-  const removeItem = (itemID) => {
-    const updatedItems = basketItems.filter((item) => item.ID !== itemID);
+  const removeItem = (removeditem) => {
+    const updatedItems = basketItems.filter(
+      (item) => !(item.ID === removeditem.ID && item.Size === removeditem.Size)
+    );
+    console.log("removing: ", removeditem);
     setBasketItems(updatedItems);
     localStorage.setItem("myBasket", JSON.stringify(updatedItems));
     window.dispatchEvent(new Event("storageChange"));
@@ -235,7 +238,7 @@ function Basket() {
               </button>
               <button
                 className="basket-remove"
-                onClick={() => removeItem(item.ID)}
+                onClick={() => removeItem(item)}
               >
                 Remove all
               </button>
