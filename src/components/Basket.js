@@ -91,9 +91,16 @@ function Basket() {
 
   // Function to remove an item from the basket
   const removeItem = (removeditem) => {
+    const initialCount = basketItems.length;
+
     const updatedItems = basketItems.filter(
       (item) => !(item.ID === removeditem.ID && item.Size === removeditem.Size)
     );
+
+    const removedCount = initialCount - updatedItems.length;
+    let newtotprice = totalprice - removeditem.Price * removedCount;
+    settotalprice(newtotprice);
+
     console.log("removing: ", removeditem);
     setBasketItems(updatedItems);
     localStorage.setItem("myBasket", JSON.stringify(updatedItems));
@@ -164,6 +171,8 @@ function Basket() {
       window.dispatchEvent(new Event("storageChange"));
 
       console.log("Object saved to local storage:", addedItem);
+      let newtotprice = totalprice + addedItem.Price;
+      settotalprice(newtotprice);
       showSnackbar("Item added to basket!");
     } else {
       console.log("You've already selected all the ones in stock");
@@ -189,6 +198,8 @@ function Basket() {
       setBasketItems(updatedItems);
       localStorage.setItem("myBasket", JSON.stringify(updatedItems));
       window.dispatchEvent(new Event("storageChange"));
+      let newtotprice = totalprice - removeditem.Price;
+      settotalprice(newtotprice);
     }
   };
 
@@ -201,7 +212,7 @@ function Basket() {
 
   return (
     <div>
-      <h1 className="margintop-hd">Your Basket</h1>
+      <h1 className="margintop-hd basket-title">Your Basket</h1>
       {basketItems.map((item, index) => {
         const uniqueKey = `${item.ID}-${item.Size}-${index}`; // Ensure each key is unique, even for duplicates
 

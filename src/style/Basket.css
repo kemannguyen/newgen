@@ -1,3 +1,7 @@
+.basket-title {
+  margin-left: 50px;
+}
+
 .basket-item-cards {
   display: flex;
   flex-direction: row;

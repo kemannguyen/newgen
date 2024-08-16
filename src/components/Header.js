@@ -12,8 +12,6 @@ const Header = () => {
   const path = window.location.pathname.split("/");
   var pathname = "/" + path[1];
 
-  const key = "myBasket";
-
   console.log(pathname);
   const [menu, setMenu] = useState(false);
   const openMenu = () => setMenu(!menu);
@@ -28,7 +26,7 @@ const Header = () => {
       case "/shop":
         setindex(1);
         break;
-      case "/outfit-of-the-day":
+      case "/outfit-highlights":
         setindex(2);
         break;
       case "/about-us":
@@ -68,7 +66,7 @@ const Header = () => {
 
   const ToOOTD = () => {
     window.scrollTo(0, 0);
-    navigate("/outfit-of-the-day");
+    navigate("/outfit-highlights");
   };
 
   const ToAbtUs = () => {
