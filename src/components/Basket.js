@@ -17,6 +17,8 @@ function Basket() {
   const [snackbarVisible, setSnackbarVisible] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  const [totalprice, settotalprice] = useState(0);
+
   const uniqueItemIds = new Set();
 
   let basketItemKey = 0;
@@ -75,13 +77,16 @@ function Basket() {
         console.log("Size exists, no need to fetch.");
       }
     };
+    let temptotprice = 0;
     for (let i = 0; i < tempArr.length; i++) {
       const q = query(
         collection(db, "itemsinstock"),
         where("ID", "==", parseInt(tempArr[i].ID))
       );
       fetchData(tempArr[i].ID, q);
+      temptotprice += tempArr[i].Price;
     }
+    settotalprice(temptotprice);
   }, []);
 
   // Function to remove an item from the basket
@@ -170,8 +175,8 @@ function Basket() {
 
   // Function to remove a duplicate item from the basket
   const removeDuplicate = (removeditem) => {
-    const itemIndex = basketItems.findIndex(
-      (item) => item.ID === removeditem.ID
+    const itemIndex = basketItems.findLastIndex(
+      (item) => item.ID === removeditem.ID && item.Size === removeditem.Size
     );
     if (itemIndex > -1) {
       const updatedItems = basketItems.filter(
@@ -194,14 +199,17 @@ function Basket() {
   return (
     <div>
       <h1 className="margintop-hd">Your Basket</h1>
-      {basketItems.map((item) => {
+      {basketItems.map((item, index) => {
+        const uniqueKey = `${item.ID}-${item.Size}-${index}`; // Ensure each key is unique, even for duplicates
+
         if (uniqueItemIds.has(item.ID + item.Size)) {
-          return null; // Skip rendering if the item ID has already been mapped out
+          return null; // Skip rendering if the item ID and Size combo has already been mapped out
         }
 
         uniqueItemIds.add(item.ID + item.Size);
+
         return (
-          <div key={item.ID + item.Size}>
+          <div key={uniqueKey}>
             <div className="basket-item-cards">
               <img className="basket-img" src={item.ImgUrl} />
               <div className="basket-row-sort">
@@ -211,12 +219,14 @@ function Basket() {
               </div>
 
               <button
-                className="basket-dupe-btn"
+                className="basket-dupe-btn-l"
                 onClick={() => removeDuplicate(item)}
               >
                 -
               </button>
-              <span>{getDuplicateCount(item.ID, item.Size)}</span>
+              <span className="dupe-amt">
+                {getDuplicateCount(item.ID, item.Size)}
+              </span>
               <button
                 className="basket-dupe-btn"
                 onClick={() => addDuplicate(item)}
@@ -227,12 +237,15 @@ function Basket() {
                 className="basket-remove"
                 onClick={() => removeItem(item.ID)}
               >
-                Remove
+                Remove all
               </button>
             </div>
           </div>
         );
       })}
+
+      <div className="totprice">Total: ${totalprice}</div>
+      <button className="checkoutbtn">Check out</button>
       {snackbarVisible && (
         <Snackbar
           message={snackbarMessage}
