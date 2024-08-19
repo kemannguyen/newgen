@@ -9,6 +9,7 @@ import {
   where,
   getDocs,
 } from "firebase/firestore";
+import { loadStripe } from "@stripe/stripe-js";
 
 function Basket() {
   const [basketItems, setBasketItems] = useState([]);
@@ -210,6 +211,48 @@ function Basket() {
     ).length;
   };
 
+  //payment integration
+
+  const makePayment = async () => {
+    const stripe = await loadStripe(
+      "pk_test_51PpSl2RwzgwWxDaI63QX1bujUuP369rNjATqpX7mYH9J6NzlzARCD8EALfgX5GWzYD6dTF64kPqLguvvEhuQAPlE00iQpelFLq"
+    ); // Your public key
+
+    const items = basketItems.map((item) => ({
+      id: item.ID,
+      name: item.Name,
+      size: item.Size,
+      price: item.Price * 100, // Convert dollars to cents
+      //quantity: getDuplicateCount(item.ID, item.Size),
+    }));
+
+    try {
+      const response = await fetch(
+        "http://localhost:7000/api/create-checkout-session",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ items }),
+        }
+      );
+      const session = await response.json();
+
+      const result = await stripe.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (result.error) {
+        alert(result.error.message);
+        console.log("error2", result.error);
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Failed to initiate payment process.");
+    }
+  };
+
   return (
     <div>
       <h1 className="margintop-hd basket-title">Your Basket</h1>
@@ -225,7 +268,7 @@ function Basket() {
         return (
           <div key={uniqueKey}>
             <div className="basket-item-cards">
-              <img className="basket-img" src={item.ImgUrl} />
+              <img className="basket-img" src={item.ImgUrl} alt="" />
               <div className="basket-row-sort">
                 <div className="basket-title">{item.Name}</div>
                 <div>Size: {item.Size}</div>
@@ -259,7 +302,9 @@ function Basket() {
       })}
 
       <div className="totprice">Total: ${totalprice}</div>
-      <button className="checkoutbtn">Check out</button>
+      <button className="checkoutbtn" onClick={makePayment}>
+        Check out
+      </button>
       {snackbarVisible && (
         <Snackbar
           message={snackbarMessage}

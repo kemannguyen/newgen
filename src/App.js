@@ -22,6 +22,10 @@ const App = () => {
     "https://drive.google.com/thumbnail?id=1iEI41bIEvuJPL5qQjF0U63pFvQxK0yio&sz=w1920",
   ];
 
+  const STRIPE_SECRET = process.env.REACT_APP_STRIPE_SECRET;
+
+  const stripe = require("stripe")(STRIPE_SECRET);
+  console.log("process", STRIPE_SECRET);
   const [selectedCategory, setSelectedCategory] = useState("");
   const categories = ["tops", "bottoms", "hoodies", "outerwear", "accessories"];
 
@@ -58,6 +62,8 @@ const App = () => {
           <Route path="/outfit-highlights" element={""} />
           <Route path="/about-us" element={""} />
           <Route path="/basket" element={<Basket />} />
+          <Route path="/success" element={""} />
+          <Route path="/order/*" element={""} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
