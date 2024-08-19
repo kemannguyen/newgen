@@ -5,9 +5,7 @@ require("dotenv").config();
 
 const STRIPE_SECRET = process.env.STRIPE_SECRET;
 
-const stripe = require("stripe")(
-  "sk_test_51PpSl2RwzgwWxDaImVYQ41oV3VMOjXwX98aF9KNXbGPA6XIn7vXg3AtFNfpBcHzvBfWifjxwhYUwZGvBPmdc2eaW00IyE8CzZU"
-);
+const stripe = require("stripe")(STRIPE_SECRET);
 
 app.use(express.json());
 app.use(cors());
@@ -28,8 +26,8 @@ app.post("/api/create-checkout-session", async (req, res) => {
         quantity: 1,
       })),
       mode: "payment",
-      success_url: "http://localhost:3000/success",
-      cancel_url: "http://localhost:3000/basket",
+      success_url: "https://newgenfashion.vercel.app/success",
+      cancel_url: "https://newgenfashion.vercel.app/basket",
     });
     res.json({ id: session.id });
   } catch (error) {
