@@ -19,7 +19,7 @@ app.post("/api/create-checkout-session", async (req, res) => {
         price_data: {
           currency: "usd",
           product_data: {
-            name: item.name,
+            name: item.name + " : " + item.size,
           },
           unit_amount: item.price,
         },
