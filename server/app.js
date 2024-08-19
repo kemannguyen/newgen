@@ -26,8 +26,8 @@ app.post("/api/create-checkout-session", async (req, res) => {
         quantity: 1,
       })),
       mode: "payment",
-      success_url: "https://newgenfashion.vercel.app/success",
-      cancel_url: "https://newgenfashion.vercel.app/basket",
+      success_url: "http://localhost:3000/success",
+      cancel_url: "http://localhost:3000/basket",
     });
     res.json({ id: session.id });
   } catch (error) {

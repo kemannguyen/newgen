@@ -226,6 +226,9 @@ function Basket() {
       //quantity: getDuplicateCount(item.ID, item.Size),
     }));
 
+    //for prod
+    //"https://newgenfashion.vercel.app/api/create-checkout-session"
+
     try {
       const response = await fetch(
         "https://newgenfashion.vercel.app/api/create-checkout-session",
