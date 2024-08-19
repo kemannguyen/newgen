@@ -229,9 +229,12 @@ function Basket() {
     //for prod
     //"https://newgenfashion.vercel.app/api/create-checkout-session"
 
+    //for dev
+    //"http://localhost:7000/api/create-checkout-session"
+
     try {
       const response = await fetch(
-        "https://newgenfashion.vercel.app/api/create-checkout-session",
+        "http://localhost:7000/api/create-checkout-session",
         {
           method: "POST",
           headers: {
