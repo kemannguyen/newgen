@@ -234,7 +234,7 @@ function Basket() {
 
     try {
       const response = await fetch(
-        "https://newgenfashion.vercel.app/api/create-checkout-session",
+        "http://localhost:7000/api/create-checkout-session",
         {
           method: "POST",
           headers: {
