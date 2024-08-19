@@ -23,8 +23,9 @@
   }
 }
 @media (pointer: coarse) {
-  .basket-title {
+  .basket-itemname {
     font-size: small;
+    font-weight: bold;
   }
 }
 .basket-img {
@@ -32,7 +33,7 @@
   min-width: 100px;
   margin-right: 10px;
 }
-.basket-title {
+.basket-itemname {
   font-weight: bold;
 }
 

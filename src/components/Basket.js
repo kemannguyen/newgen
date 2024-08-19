@@ -276,7 +276,7 @@ function Basket() {
             <div className="basket-item-cards">
               <img className="basket-img" src={item.ImgUrl} alt="" />
               <div className="basket-row-sort">
-                <div className="basket-title">{item.Name}</div>
+                <div className="basket-itemname">{item.Name}</div>
                 <div>Size: {item.Size}</div>
                 <div className="basket-price">${item.Price}</div>
               </div>
