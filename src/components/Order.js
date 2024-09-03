@@ -9,7 +9,7 @@ const Order = () => {
   const STRIPE_SECRET1 = process.env.REACT_APP_STRIPE_SECRET;
 
   //change to process.env.STRIPE_SECRET for prod
-  const stripe = require("stripe")(process.env.STRIPE_SECRET);
+  const stripe = require("stripe")(STRIPE_SECRET1);
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
