@@ -38,56 +38,61 @@ function Basket() {
   const handleCloseSnackbar = () => {
     setSnackbarVisible(false);
   };
+  const localStorageKeyExists = (key) => {
+    return localStorage.getItem(key) !== null;
+  };
 
   // Load items from local storage when the component mounts
   useEffect(() => {
     const storedItems = localStorage.getItem("myBasket");
-    if (storedItems) {
-      setBasketItems(JSON.parse(storedItems));
-    }
-    let tempArr = JSON.parse(storedItems);
-
-    const fetchData = async (itemID, q) => {
-      const sessionStorageSizes = sessionStorage.getItem("itemsSizes");
-      let itemsizes = sessionStorageSizes
-        ? JSON.parse(sessionStorageSizes)
-        : [];
-
-      // Check if the size for the current itemID is already present
-      const sizeExists = itemsizes.some(
-        (size) => size.ID.toString() === itemID
-      );
-
-      if (!sizeExists) {
-        // If size doesn't exist, fetch from Firestore
-        const querySnapshot = await getDocs(q);
-        const fetchedSizes = querySnapshot.docs.map((doc) => ({
-          ...doc.data(),
-        }));
-
-        // Add fetched sizes to the existing sizes array
-        itemsizes = [...itemsizes, ...fetchedSizes];
-        setItemSizes(itemsizes);
-
-        // Update local storage
-        sessionStorage.setItem("itemsSizes", JSON.stringify(itemsizes));
-        console.log("Fetched and added new sizes to local storage.");
-      } else {
-        // If size exists, just set the state
-        setItemSizes(itemsizes);
-        console.log("Size exists, no need to fetch.");
+    if (localStorageKeyExists("myBasket")) {
+      if (storedItems) {
+        setBasketItems(JSON.parse(storedItems));
       }
-    };
-    let temptotprice = 0;
-    for (let i = 0; i < tempArr.length; i++) {
-      const q = query(
-        collection(db, "itemsinstock"),
-        where("ID", "==", parseInt(tempArr[i].ID))
-      );
-      fetchData(tempArr[i].ID, q);
-      temptotprice += tempArr[i].Price;
+      let tempArr = JSON.parse(storedItems);
+
+      const fetchData = async (itemID, q) => {
+        const sessionStorageSizes = sessionStorage.getItem("itemsSizes");
+        let itemsizes = sessionStorageSizes
+          ? JSON.parse(sessionStorageSizes)
+          : [];
+
+        // Check if the size for the current itemID is already present
+        const sizeExists = itemsizes.some(
+          (size) => size.ID.toString() === itemID
+        );
+
+        if (!sizeExists) {
+          // If size doesn't exist, fetch from Firestore
+          const querySnapshot = await getDocs(q);
+          const fetchedSizes = querySnapshot.docs.map((doc) => ({
+            ...doc.data(),
+          }));
+
+          // Add fetched sizes to the existing sizes array
+          itemsizes = [...itemsizes, ...fetchedSizes];
+          setItemSizes(itemsizes);
+
+          // Update local storage
+          sessionStorage.setItem("itemsSizes", JSON.stringify(itemsizes));
+          console.log("Fetched and added new sizes to local storage.");
+        } else {
+          // If size exists, just set the state
+          setItemSizes(itemsizes);
+          console.log("Size exists, no need to fetch.");
+        }
+      };
+      let temptotprice = 0;
+      for (let i = 0; i < tempArr.length; i++) {
+        const q = query(
+          collection(db, "itemsinstock"),
+          where("ID", "==", parseInt(tempArr[i].ID))
+        );
+        fetchData(tempArr[i].ID, q);
+        temptotprice += tempArr[i].Price;
+      }
+      settotalprice(temptotprice);
     }
-    settotalprice(temptotprice);
   }, []);
 
   // Function to remove an item from the basket

@@ -26,6 +26,8 @@ const Order = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      localStorage.clear();
+      window.dispatchEvent(new Event("storageChange"));
       const sessionStorageItems = sessionStorage.getItem("clothingItems");
       if (sessionStorageItems) {
         setcItems(JSON.parse(sessionStorageItems));
