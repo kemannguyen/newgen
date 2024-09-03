@@ -6,7 +6,7 @@ import "../style/Order.css";
 
 const Order = () => {
   const STRIPE_SECRET1 = process.env.REACT_APP_STRIPE_SECRET;
-  const stripe = require("stripe")(STRIPE_SECRET1);
+  const stripe = require("stripe")(STRIPE_SECRET);
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
