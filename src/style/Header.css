@@ -10,15 +10,6 @@
   opacity: 0.9;
 }
 
-.title {
-  margin-left: 20px;
-  margin-top: auto;
-  margin-bottom: auto;
-  font-weight: bold;
-  font-size: 30px;
-  color: rgb(71, 71, 71);
-  font-family: "Caveat", cursive;
-}
 .titleimg {
   height: 80px;
   width: 100px;

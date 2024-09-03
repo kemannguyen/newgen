@@ -12,7 +12,6 @@ const Header = () => {
   const path = window.location.pathname.split("/");
   var pathname = "/" + path[1];
 
-  console.log(pathname);
   const [menu, setMenu] = useState(false);
   const openMenu = () => setMenu(!menu);
   const [tabindex, setindex] = useState(0);
@@ -34,6 +33,9 @@ const Header = () => {
         break;
       case "/basket":
         setindex(4);
+        break;
+      case "/order":
+        setindex(5);
         break;
       default:
         break;
@@ -159,7 +161,7 @@ const Header = () => {
   }
 
   let basketbtn;
-  if (tabindex === 5) {
+  if (tabindex === 4) {
     basketbtn = (
       <span className="navbtn-active" onClick={ToBasket}>
         {" "}

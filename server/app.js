@@ -26,9 +26,55 @@ app.post("/api/create-checkout-session", async (req, res) => {
         quantity: 1,
       })),
       mode: "payment",
-      success_url: "http://localhost:3000/success",
+      success_url: "http://localhost:3000/order/{CHECKOUT_SESSION_ID}",
       cancel_url: "http://localhost:3000/basket",
+      shipping_address_collection: {
+        allowed_countries: ["US", "CA", "GB"], // Specify allowed countries
+      },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: "fixed_amount",
+            fixed_amount: {
+              amount: 500,
+              currency: "usd",
+            },
+            display_name: "Standard Shipping",
+            delivery_estimate: {
+              minimum: {
+                unit: "business_day",
+                value: 5,
+              },
+              maximum: {
+                unit: "business_day",
+                value: 7,
+              },
+            },
+          },
+        },
+        {
+          shipping_rate_data: {
+            type: "fixed_amount",
+            fixed_amount: {
+              amount: 1500,
+              currency: "usd",
+            },
+            display_name: "Express Shipping",
+            delivery_estimate: {
+              minimum: {
+                unit: "business_day",
+                value: 1,
+              },
+              maximum: {
+                unit: "business_day",
+                value: 2,
+              },
+            },
+          },
+        },
+      ],
     });
+
     res.json({ id: session.id });
   } catch (error) {
     res.status(500).json({ error: error.message });
