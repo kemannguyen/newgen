@@ -44,33 +44,57 @@ const Order = () => {
         console.log("fetch all");
       }
     };
-    const fetchSession = async () => {
-      const session = await stripe.checkout.sessions.retrieve(patharr[2]);
-      setcEmail(session.customer_details.email);
-      setcTotal(session.amount_total / 100);
-      setOrderID(session.payment_intent);
-      setAdress(session.shipping_details.address);
-      console.log(session.shipping_details.address);
-    };
+    // const fetchSession = async () => {
+    //   const session = await stripe.checkout.sessions.retrieve(patharr[2]);
+    //   setcEmail(session.customer_details.email);
+    //   setcTotal(session.amount_total / 100);
+    //   setOrderID(session.payment_intent);
+    //   setAdress(session.shipping_details.address);
+    //   console.log(session.shipping_details.address);
+    // };
 
-    const fetchItems = async (sessionId) => {
+    // const fetchItems = async (sessionId) => {
+    //   try {
+    //     const lineItems = await stripe.checkout.sessions.listLineItems(
+    //       sessionId
+    //     );
+    //     let i = 0;
+    //     let data = [];
+    //     // Access the metadata from each line item
+    //     lineItems.data.forEach((lineItem) => {
+    //       data.push(lineItem.description);
+    //     });
+    //     setoItems(data);
+    //   } catch (error) {
+    //     console.error("Error fetching line items:", error);
+    //   }
+    // };
+
+    const fetchSessionData = async () => {
       try {
-        const lineItems = await stripe.checkout.sessions.listLineItems(
-          sessionId
+        const response = await fetch(
+          `/api/fetch-session?sessionId=${patharr[2]}`
         );
-        let i = 0;
-        let data = [];
-        // Access the metadata from each line item
-        lineItems.data.forEach((lineItem) => {
-          data.push(lineItem.description);
-        });
-        setoItems(data);
+        const data = await response.json();
+
+        const session = data.session;
+        const lineItems = data.lineItems.data;
+
+        setcEmail(session.customer_details.email);
+        setcTotal(session.amount_total / 100);
+        setOrderID(session.payment_intent);
+        setAdress(session.shipping_details.address);
+
+        const items = lineItems.map((lineItem) => lineItem.description);
+        setoItems(items);
       } catch (error) {
-        console.error("Error fetching line items:", error);
+        console.error("Error fetching session data:", error);
       }
     };
-    fetchSession();
-    fetchItems(patharr[2]);
+
+    fetchSessionData();
+    //fetchSession();
+    //fetchItems(patharr[2]);
     fetchData();
 
     //console.log("inside", cEmail, cTotal);
