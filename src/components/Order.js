@@ -4,13 +4,16 @@ import { firebaseApp } from "../firebase-config";
 import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 import "../style/Order.css";
 
+const stripecode = process.env.STRIPE_SECRET;
+
 const Order = () => {
   //use this for dev local
   const STRIPE_SECRET1 = process.env.REACT_APP_STRIPE_SECRET;
 
   //change to process.env.STRIPE_SECRET for prod
   const stripe = require("stripe")(process.env.STRIPE_SECRET);
-  console.log(process.env.STRIPE_SECRET);
+  console.log("stripe code:", process.env.STRIPE_SECRET);
+  console.log("SC 2", stripecode);
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
