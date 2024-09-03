@@ -10,6 +10,7 @@ const Order = () => {
 
   //change to process.env.STRIPE_SECRET for prod
   const stripe = require("stripe")(process.env.STRIPE_SECRET);
+  console.log(process.env.STRIPE_SECRET);
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
