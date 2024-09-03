@@ -4,15 +4,13 @@ import { firebaseApp } from "../firebase-config";
 import { getFirestore, collection, query, getDocs } from "firebase/firestore";
 import "../style/Order.css";
 
-const stripe = require("stripe")(process.env.STRIPE_SECRET);
-
 const Order = () => {
   //use this for dev local
-  const STRIPE_SECRET1 = process.env.REACT_APP_STRIPE_SECRET;
-  const stripecode2 = process.env.STRIPE_SECRET;
+  //const STRIPE_SECRET1 = process.env.REACT_APP_STRIPE_SECRET;
+  //const stripecode2 = process.env.STRIPE_SECRET;
 
   //change to process.env.STRIPE_SECRET for prod
-  //const stripe = require("stripe")(process.env.STRIPE_SECRET);
+  const stripe = require("stripe")(process.env.STRIPE_SECRET);
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
@@ -111,7 +109,11 @@ const Order = () => {
     ).length;
   };
 
-  console.log("success!", process.env.REACT_APP_STRIPE_SECRET);
+  console.log(
+    "success!",
+    process.env.REACT_APP_STRIPE_SECRET,
+    process.env.STRIPE_SECRET
+  );
   //customer_details: email:
   //amount_total:
   //console.log(cEmail, cTotal);
