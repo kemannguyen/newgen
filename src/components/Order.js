@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { firebaseApp } from "../firebase-config";
 import {
   getFirestore,
@@ -14,6 +15,7 @@ import "../style/Order.css";
 const Order = () => {
   //use this for dev local
   const stripe = require("stripe")(process.env.STRIPE_SECRET);
+  const navigate = useNavigate();
 
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
@@ -158,7 +160,7 @@ const Order = () => {
 
       if (!querySnapshot.empty) {
         // If a document with the same name exists, show a message and don't add it to Firestore
-        console.log(querySnapshot);
+        console.log(querySnapshot.docs.data());
       } else {
         // If no document with the same name exists, proceed to add the new user
         console.log("order doesn't exist");
