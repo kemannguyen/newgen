@@ -74,10 +74,10 @@ const Order = () => {
       }
     };
 
-    console.log("order", orderID);
     fetchSessionData();
     //---
     fetchData();
+    console.log("order", orderID);
   }, []);
 
   //make objects for the item cards
