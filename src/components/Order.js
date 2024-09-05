@@ -178,6 +178,11 @@ const Order = () => {
     }
   };
 
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter") {
+      handleSearch();
+    }
+  };
   const handleSearch = () => {
     // Logic to handle the search can be added here
     console.log("Searching for:", searchID);
@@ -186,16 +191,20 @@ const Order = () => {
 
   if (showItems.length === 0) {
     return (
-      <div className="margintop-hd">
-        Find your order!
+      <div className="margintop-hd find-order-container ">
+        <div className="find-order-text">Find your order</div>
         <div>
           <input
+            className="find-order-input"
             type="text"
             value={searchID}
             onChange={(e) => setSearchID(e.target.value)}
-            placeholder="Enter search term"
+            onKeyDown={handleKeyDown}
+            placeholder="Enter order ID"
           />
-          <button onClick={handleSearch}>Search</button>
+          <button className="find-order-btn" onClick={handleSearch}>
+            Find
+          </button>
         </div>
       </div>
     );

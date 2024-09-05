@@ -19,3 +19,36 @@
     font-size: 20px !important;
   }
 }
+
+.find-order-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.find-order-text {
+  margin-top: 100px;
+  font-size: 40px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.find-order-input {
+  max-width: 900px;
+  width: 40vw;
+  height: 50px;
+  font-size: 20px;
+  padding-left: 20px;
+}
+
+.find-order-btn {
+  height: 55px;
+  width: 100px;
+  margin-left: 3px;
+  border-radius: 0px;
+
+  background-color: rgb(214, 214, 214);
+  vertical-align: 0px;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 20px;
+  color: rgb(49, 49, 49);
+}
