@@ -162,6 +162,8 @@ const Order = () => {
         // If a document with the same name exists, show a message and don't add it to Firestore
         const doc = querySnapshot.docs[0];
         console.log(doc.data());
+        let tempItem = doc.data();
+        console.log(tempItem.sessID);
       } else {
         // If no document with the same name exists, proceed to add the new user
         console.log("order doesn't exist");
