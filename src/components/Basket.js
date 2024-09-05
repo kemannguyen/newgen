@@ -113,11 +113,6 @@ function Basket() {
     window.dispatchEvent(new Event("storageChange"));
   };
 
-  // If basket is empty, display a message
-  if (basketItems.length === 0) {
-    return <div className="margintop-hd">Your basket is empty!</div>;
-  }
-
   //DUPLICATES****
 
   const saveToLocalStorage = (item) => {
@@ -263,7 +258,10 @@ function Basket() {
       alert("Failed to initiate payment process.");
     }
   };
-
+  // If basket is empty, display a message
+  if (basketItems.length === 0) {
+    return <div className="margintop-hd">Your basket is empty!</div>;
+  }
   return (
     <div>
       <h1 className="margintop-hd basket-title">Your Basket</h1>
