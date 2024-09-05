@@ -14,6 +14,7 @@ const Order = () => {
   const [orderItems, setoItems] = useState([]);
   const [showItems, setShowItems] = useState([]);
   const [once, setOnce] = useState(false);
+  const [once2, setOnce2] = useState(false);
   const [orderID, setOrderID] = useState("");
   const [adress, setAdress] = useState("");
   const [searchID, setSearchID] = useState("");
@@ -77,8 +78,12 @@ const Order = () => {
     fetchSessionData();
     //---
     fetchData();
-    console.log("order", orderID);
   }, []);
+
+  if (orderID !== "" && !once2) {
+    console.log(orderID);
+    setOnce2(true);
+  }
 
   //make objects for the item cards
   let shownitems = [];
