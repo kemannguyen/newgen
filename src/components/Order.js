@@ -80,7 +80,7 @@ const Order = () => {
         setcTotal(session.amount_total / 100);
         setOrderID(session.payment_intent);
         setAdress(session.shipping_details.address);
-
+        setShipping(session.total_details.amount_shipping / 100);
         const items = lineItems.map((lineItem) => lineItem.description);
         setoItems(items);
         console.log("sess", session.total_details.amount_shipping);
@@ -245,7 +245,7 @@ const Order = () => {
           </div>
         );
       })}
-      <div className="order-text">Shipping: ${cTotal}</div>
+      <div className="order-text">Shipping: ${shippingfee}</div>
       <div className="order-text">Total: ${cTotal}</div>
     </div>
   );

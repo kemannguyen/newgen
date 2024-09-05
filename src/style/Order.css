@@ -5,7 +5,10 @@
 
 .order-text {
   margin-left: 100px;
-  margin-bottom: 50px;
+}
+.order-text-shipping {
+  margin-left: 100px;
+  color: rgb(136, 136, 136);
 }
 
 .order-title {
