@@ -27,6 +27,7 @@ const Order = () => {
   const [orderID, setOrderID] = useState("");
   const [adress, setAdress] = useState("");
   const [searchID, setSearchID] = useState("");
+  const [shippingfee, setShipping] = useState(0);
 
   const location = useLocation();
   const patharr = location.pathname.split("/");
@@ -82,7 +83,7 @@ const Order = () => {
 
         const items = lineItems.map((lineItem) => lineItem.description);
         setoItems(items);
-        console.log("sess", session);
+        console.log("sess", session.total_details);
       } catch (error) {
         console.error("Error fetching session data:", error);
       }
