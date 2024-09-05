@@ -16,6 +16,7 @@ const Order = () => {
   const [once, setOnce] = useState(false);
   const [orderID, setOrderID] = useState("");
   const [adress, setAdress] = useState("");
+  const [searchID, setSearchID] = useState("");
 
   const location = useLocation();
   const patharr = location.pathname.split("/");
@@ -108,8 +109,27 @@ const Order = () => {
       (item) => item.Name === itemName && item.Size === itemSize
     ).length;
   };
+
+  const handleSearch = () => {
+    // Logic to handle the search can be added here
+    console.log("Searching for:", searchID);
+  };
+
   if (showItems.length === 0) {
-    return <div className="margintop-hd">Find your order!</div>;
+    return (
+      <div className="margintop-hd">
+        Find your order!
+        <div>
+          <input
+            type="text"
+            value={searchID}
+            onChange={(e) => setSearchID(e.target.value)}
+            placeholder="Enter search term"
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      </div>
+    );
   }
 
   return (
