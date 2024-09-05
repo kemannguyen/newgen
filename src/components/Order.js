@@ -245,7 +245,7 @@ const Order = () => {
           </div>
         );
       })}
-      <div className="order-text">Shipping: ${shippingfee}</div>
+      <div className="order-text-shipping">Shipping: ${shippingfee}</div>
       <div className="order-text">Total: ${cTotal}</div>
     </div>
   );
