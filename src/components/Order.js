@@ -82,6 +82,7 @@ const Order = () => {
 
         const items = lineItems.map((lineItem) => lineItem.description);
         setoItems(items);
+        console.log("sess", session);
       } catch (error) {
         console.error("Error fetching session data:", error);
       }
@@ -243,6 +244,7 @@ const Order = () => {
           </div>
         );
       })}
+      <div className="order-text">Shipping: ${cTotal}</div>
       <div className="order-text">Total: ${cTotal}</div>
     </div>
   );
