@@ -91,12 +91,12 @@ const Order = () => {
     try {
       // Query the Firestore collection to check if a document with the same name exists
       const usersRef = collection(db, "orders");
-      const q = query(usersRef, where("ID", "==", orderref));
-      const querySnapshot = await getDocs(q);
+      const q2 = query(usersRef, where("ID", "==", orderref));
+      const querySnapshot = await getDocs(q2);
 
       if (!querySnapshot.empty) {
         // If a document with the same name exists, show a message and don't add it to Firestore
-        setMessage("order exists already");
+
         console.log("order exists already");
       } else {
         // If no document with the same name exists, proceed to add the new user
@@ -104,12 +104,11 @@ const Order = () => {
           ID: orderref,
           sessID: patharr[2],
         });
-        setMessage("order added successfully!");
+
         console.log("order ADDED");
       }
     } catch (error) {
       console.error("Error checking or adding document: ", error);
-      setMessage("An error occurred!");
     }
   };
 
