@@ -6,11 +6,8 @@ import "../style/Order.css";
 
 const Order = () => {
   //use this for dev local
-  //const STRIPE_SECRET1 = process.env.REACT_APP_STRIPE_SECRET;
-  //const stripecode2 = process.env.STRIPE_SECRET;
-
-  //change to process.env.STRIPE_SECRET for prod
   const stripe = require("stripe")(process.env.STRIPE_SECRET);
+
   const [cEmail, setcEmail] = useState();
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
@@ -30,8 +27,11 @@ const Order = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      //clear basket after buy
       localStorage.clear();
       window.dispatchEvent(new Event("storageChange"));
+
+      //fetch store items
       const sessionStorageItems = sessionStorage.getItem("clothingItems");
       if (sessionStorageItems) {
         setcItems(JSON.parse(sessionStorageItems));
@@ -44,6 +44,8 @@ const Order = () => {
         console.log("fetch all");
       }
     };
+
+    //LOCAL
     // const fetchSession = async () => {
     //   const session = await stripe.checkout.sessions.retrieve(patharr[2]);
     //   setcEmail(session.customer_details.email);
@@ -69,7 +71,10 @@ const Order = () => {
     //     console.error("Error fetching line items:", error);
     //   }
     // };
+    //fetchSession();
+    //fetchItems(patharr[2]);
 
+    //PROD
     const fetchSessionData = async () => {
       try {
         const response = await fetch(
@@ -91,19 +96,13 @@ const Order = () => {
         console.error("Error fetching session data:", error);
       }
     };
-
     fetchSessionData();
-    //fetchSession();
-    //fetchItems(patharr[2]);
-    fetchData();
 
-    //console.log("inside", cEmail, cTotal);
-    //console.log("inside", orderItems);
+    //---
+    fetchData();
   }, []);
-  //   fetchItems().then((items) => {
-  //     test2 = items;
-  //     console.log(test2); // This will log only the line items data array
-  //   });
+
+  //make objects for the item cards
   let shownitems = [];
   if (orderItems.length > 0 && once === false) {
     for (let i = 0; i < orderItems.length; i++) {
@@ -133,18 +132,6 @@ const Order = () => {
     ).length;
   };
 
-  console.log(
-    "success!",
-    process.env.REACT_APP_STRIPE_SECRET,
-    process.env.STRIPE_SECRET
-  );
-  //customer_details: email:
-  //amount_total:
-  //console.log(cEmail, cTotal);
-
-  //data
-  //console.log("order: ", orderItems);
-  console.log(showItems);
   return (
     <div className="margintop100">
       <div className="order-text">
