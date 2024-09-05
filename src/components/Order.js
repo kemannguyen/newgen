@@ -149,9 +149,29 @@ const Order = () => {
     ).length;
   };
 
+  const searchinfirebase = async (orderref) => {
+    try {
+      // Query the Firestore collection to check if a document with the same name exists
+      const usersRef = collection(db, "orders");
+      const q2 = query(usersRef, where("ID", "==", orderref));
+      const querySnapshot = await getDocs(q2);
+
+      if (!querySnapshot.empty) {
+        // If a document with the same name exists, show a message and don't add it to Firestore
+        console.log(querySnapshot);
+      } else {
+        // If no document with the same name exists, proceed to add the new user
+        console.log("order doesn't exist");
+      }
+    } catch (error) {
+      console.error("Error checking or adding document: ", error);
+    }
+  };
+
   const handleSearch = () => {
     // Logic to handle the search can be added here
     console.log("Searching for:", searchID);
+    searchinfirebase(searchID);
   };
 
   if (showItems.length === 0) {
