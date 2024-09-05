@@ -30,7 +30,7 @@ const NavigationLayer = ({ openMenu }) => {
   };
   const ToOrder = () => {
     window.scrollTo(0, 0);
-    navigate("/basket");
+    navigate("/order");
     openMenu(false);
     window.location.reload();
   };
