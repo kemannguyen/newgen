@@ -28,6 +28,12 @@ const NavigationLayer = ({ openMenu }) => {
     navigate("/outfit-highlights");
     openMenu(false);
   };
+  const ToOrder = () => {
+    window.scrollTo(0, 0);
+    navigate("/basket");
+    openMenu(false);
+    window.location.reload();
+  };
   const ToBasket = () => {
     window.scrollTo(0, 0);
     navigate("/basket");
@@ -48,6 +54,9 @@ const NavigationLayer = ({ openMenu }) => {
         </p>
         <p className="navmenu-btn" onClick={ToAbtUs}>
           About us
+        </p>
+        <p className="navmenu-btn" onClick={ToOrder}>
+          Find order
         </p>
         <div className="cartnumball">
           <div className="cartnumlayer">{itemCount}</div>

@@ -79,6 +79,7 @@ const Header = () => {
   const ToOrder = () => {
     window.scrollTo(0, 0);
     navigate("/order");
+    window.location.reload();
   };
 
   const ToBasket = () => {

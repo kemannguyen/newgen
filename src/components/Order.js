@@ -63,6 +63,9 @@ const Order = () => {
     //`http://localhost:7000/api/fetch-session?sessionId=${patharr[2]}`
 
     const fetchSessionData = async () => {
+      if (!patharr[2]) {
+        return;
+      }
       try {
         const response = await fetch(
           `/api/fetch-session?sessionId=${patharr[2]}`
