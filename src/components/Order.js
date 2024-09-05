@@ -165,6 +165,7 @@ const Order = () => {
         let tempItem = doc.data();
         console.log(tempItem.sessID);
         navigate(`/order/${tempItem.sessID}`);
+        window.location.reload();
       } else {
         // If no document with the same name exists, proceed to add the new user
         console.log("order doesn't exist");
