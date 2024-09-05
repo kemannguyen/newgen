@@ -45,36 +45,12 @@ const Order = () => {
       }
     };
 
-    //LOCAL
-    // const fetchSession = async () => {
-    //   const session = await stripe.checkout.sessions.retrieve(patharr[2]);
-    //   setcEmail(session.customer_details.email);
-    //   setcTotal(session.amount_total / 100);
-    //   setOrderID(session.payment_intent);
-    //   setAdress(session.shipping_details.address);
-    //   console.log(session.shipping_details.address);
-    // };
-
-    // const fetchItems = async (sessionId) => {
-    //   try {
-    //     const lineItems = await stripe.checkout.sessions.listLineItems(
-    //       sessionId
-    //     );
-    //     let i = 0;
-    //     let data = [];
-    //     // Access the metadata from each line item
-    //     lineItems.data.forEach((lineItem) => {
-    //       data.push(lineItem.description);
-    //     });
-    //     setoItems(data);
-    //   } catch (error) {
-    //     console.error("Error fetching line items:", error);
-    //   }
-    // };
-    //fetchSession();
-    //fetchItems(patharr[2]);
-
     //PROD
+    //`/api/fetch-session?sessionId=${patharr[2]}`
+
+    //DEV
+    //`http://localhost:7000/api/fetch-session?sessionId=${patharr[2]}`
+
     const fetchSessionData = async () => {
       try {
         const response = await fetch(
@@ -96,8 +72,9 @@ const Order = () => {
         console.error("Error fetching session data:", error);
       }
     };
-    fetchSessionData();
 
+    console.log("order", orderID);
+    fetchSessionData();
     //---
     fetchData();
   }, []);
@@ -132,7 +109,7 @@ const Order = () => {
     ).length;
   };
   if (showItems.length === 0) {
-    return <div className="margintop-hd">Your basket is empty!</div>;
+    return <div className="margintop-hd">Find your order!</div>;
   }
 
   return (

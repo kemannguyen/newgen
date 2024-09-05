@@ -31,10 +31,10 @@ const Header = () => {
       case "/about-us":
         setindex(3);
         break;
-      case "/basket":
+      case "/order":
         setindex(4);
         break;
-      case "/order":
+      case "/basket":
         setindex(5);
         break;
       default:
@@ -74,6 +74,11 @@ const Header = () => {
   const ToAbtUs = () => {
     window.scrollTo(0, 0);
     navigate("/about-us");
+  };
+
+  const ToOrder = () => {
+    window.scrollTo(0, 0);
+    navigate("/order");
   };
 
   const ToBasket = () => {
@@ -160,8 +165,25 @@ const Header = () => {
     );
   }
 
-  let basketbtn;
+  let orderbtn;
   if (tabindex === 4) {
+    orderbtn = (
+      <span className="navbtn-active" onClick={ToOrder}>
+        {" "}
+        find order
+      </span>
+    );
+  } else {
+    orderbtn = (
+      <span className="navbtn" onClick={ToOrder}>
+        {" "}
+        find order
+      </span>
+    );
+  }
+
+  let basketbtn;
+  if (tabindex === 5) {
     basketbtn = (
       <span className="navbtn-active" onClick={ToBasket}>
         {" "}
@@ -201,6 +223,7 @@ const Header = () => {
         {shopbtn}
         {ootdbtn}
         {abtusbtn}
+        {orderbtn}
       </div>
       <div className="cartimg">{basketbtn}</div>
       <div className="cart">
