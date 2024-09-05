@@ -109,6 +109,7 @@ function Basket() {
 
     console.log("removing: ", removeditem);
     setBasketItems(updatedItems);
+    showSnackbar("Item removed from basket!");
     localStorage.setItem("myBasket", JSON.stringify(updatedItems));
     window.dispatchEvent(new Event("storageChange"));
   };
@@ -201,6 +202,7 @@ function Basket() {
       window.dispatchEvent(new Event("storageChange"));
       let newtotprice = totalprice - removeditem.Price;
       settotalprice(newtotprice);
+      showSnackbar("Item removed from basket!");
     }
   };
 

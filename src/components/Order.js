@@ -10,6 +10,7 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
+import Snackbar from "./Snackbar";
 import "../style/Order.css";
 
 const Order = () => {
@@ -29,6 +30,9 @@ const Order = () => {
   const [searchID, setSearchID] = useState("");
   const [shippingfee, setShipping] = useState(0);
 
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
   const location = useLocation();
   const patharr = location.pathname.split("/");
   const uniqueItemIds = new Set();
@@ -36,6 +40,16 @@ const Order = () => {
   const db = getFirestore(firebaseApp);
 
   const q = query(collection(db, "items"));
+
+  //snackbar
+  const showSnackbar = (message) => {
+    setSnackbarMessage(message);
+    setSnackbarVisible(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarVisible(false);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -174,6 +188,7 @@ const Order = () => {
       } else {
         // If no document with the same name exists, proceed to add the new user
         console.log("order doesn't exist");
+        showSnackbar("Order doesn't exist");
       }
     } catch (error) {
       console.error("Error checking or adding document: ", error);
@@ -208,6 +223,13 @@ const Order = () => {
             Find
           </button>
         </div>
+        {snackbarVisible && (
+          <Snackbar
+            message={snackbarMessage}
+            duration={3000}
+            onClose={handleCloseSnackbar}
+          />
+        )}
       </div>
     );
   }
