@@ -9,8 +9,6 @@ import {
   getDocs,
   where,
   addDoc,
-  doc,
-  getDoc,
 } from "firebase/firestore";
 import "../style/Order.css";
 
@@ -156,14 +154,14 @@ const Order = () => {
   const searchinfirebase = async (orderref) => {
     try {
       // Query the Firestore collection to check if a document with the same name exists
-      const usersRef = doc(db, "orders", orderref);
-      //const q2 = query(usersRef, where("ID", "==", orderref));
-      //const querySnapshot = await getDocs(q2);
-      const querySnapshot = await getDoc(usersRef);
+      const usersRef = collection(db, "orders");
+      const q2 = query(usersRef, where("ID", "==", orderref));
+      const querySnapshot = await getDocs(q2);
 
       if (!querySnapshot.empty) {
         // If a document with the same name exists, show a message and don't add it to Firestore
-        console.log(querySnapshot.data());
+        const doc = querySnapshot.docs[0];
+        console.log(doc.data());
       } else {
         // If no document with the same name exists, proceed to add the new user
         console.log("order doesn't exist");
