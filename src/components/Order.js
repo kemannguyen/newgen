@@ -160,7 +160,7 @@ const Order = () => {
 
       if (!querySnapshot.empty) {
         // If a document with the same name exists, show a message and don't add it to Firestore
-        console.log(querySnapshot.docs.data());
+        console.log(querySnapshot.data());
       } else {
         // If no document with the same name exists, proceed to add the new user
         console.log("order doesn't exist");
