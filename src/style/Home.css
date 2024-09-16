@@ -1,6 +1,9 @@
 .margintop80 {
   margin-top: 80px;
 }
+.margintop40 {
+  margin-top: 40px;
+}
 .fullscreen {
   width: 100vw;
   height: 50vw;
@@ -94,6 +97,7 @@
 .breadtext {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   padding-left: 10vw;
   padding-right: 10vw;
   padding-top: 10px;
@@ -122,6 +126,20 @@
 .xmargin {
   margin-left: auto;
   margin-right: auto;
+}
+.image0-8 {
+  min-width: 60%;
+  object-fit: contain;
+}
+.flex-same-row {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 620px) {
+  .flex-same-row {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .fade-in {
