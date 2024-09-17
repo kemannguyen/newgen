@@ -13,6 +13,7 @@ import SideNavbar from "./components/SideNavbar";
 import ItemPage from "./components/ItemPage";
 import Basket from "./components/Basket";
 import Order from "./components/Order";
+import Footer from "./components/Footer";
 
 const App = () => {
   const images = [
@@ -59,13 +60,14 @@ const App = () => {
           <Route path="/shop/item/*" element={<ItemPage />} />
 
           <Route path="/outfit-highlights" element={""} />
-          <Route path="/about-us" element={""} />
+          <Route path="/contact-us" element={""} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/success" element={""} />
           <Route path="/order/*" element={<Order />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
+      <Footer />
     </Router>
   );
 };

@@ -262,10 +262,10 @@ function Basket() {
   };
   // If basket is empty, display a message
   if (basketItems.length === 0) {
-    return <div className="margintop-hd">Your basket is empty!</div>;
+    return <div className="margintop-hd flexbox">Your basket is empty!</div>;
   }
   return (
-    <div>
+    <div className="flexbox">
       <h1 className="margintop-hd basket-title">Your Basket</h1>
       <div className="totprice">
         test card: 4242 4242 4242 4242, any future date, cvc.

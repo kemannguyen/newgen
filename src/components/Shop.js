@@ -53,7 +53,7 @@ const Shop = ({ selectedCategory }) => {
   );
 
   return (
-    <div className="shopping-page margintop80">
+    <div className="shopping-page margintop80 flexbox">
       <div className="clothing-list">
         {selectedItems.map((item) => (
           <Link className="link" key={item.ID} to={`/shop/item/${item.ID}`}>

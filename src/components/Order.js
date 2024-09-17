@@ -208,7 +208,7 @@ const Order = () => {
 
   if (showItems.length === 0) {
     return (
-      <div className="margintop-hd find-order-container ">
+      <div className="margintop-hd find-order-container flexbox">
         <div className="find-order-text">Find your order</div>
         test order ID: pi_3PveyTRwzgwWxDaI14tYlRLH
         <div>
@@ -236,7 +236,7 @@ const Order = () => {
   }
 
   return (
-    <div className="margintop100">
+    <div className="margintop100 flexbox">
       <div className="order-text">
         <div className="order-title">Order: {orderID}</div>
         <div>{cEmail}</div>

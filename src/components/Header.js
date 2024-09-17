@@ -31,7 +31,7 @@ const Header = () => {
       case "/outfit-highlights":
         setindex(2);
         break;
-      case "/about-us":
+      case "/contact-us":
         setindex(3);
         break;
       case "/order":
@@ -108,9 +108,9 @@ const Header = () => {
     navigate("/outfit-highlights");
   };
 
-  const ToAbtUs = () => {
+  const ToContactUS = () => {
     window.scrollTo(0, 0);
-    navigate("/about-us");
+    navigate("/contact-us");
   };
 
   const ToOrder = () => {
@@ -186,19 +186,19 @@ const Header = () => {
     );
   }
 
-  let abtusbtn;
+  let contactusbtn;
   if (tabindex === 3) {
-    abtusbtn = (
-      <span className="navbtn-active" onClick={ToAbtUs}>
+    contactusbtn = (
+      <span className="navbtn-active" onClick={ToContactUS}>
         {" "}
-        about us
+        contact us
       </span>
     );
   } else {
-    abtusbtn = (
-      <span className="navbtn" onClick={ToAbtUs}>
+    contactusbtn = (
+      <span className="navbtn" onClick={ToContactUS}>
         {" "}
-        about us
+        contact us
       </span>
     );
   }
@@ -266,7 +266,7 @@ const Header = () => {
         {homebtn}
         {shopbtn}
         {ootdbtn}
-        {abtusbtn}
+        {contactusbtn}
         {orderbtn}
       </div>
       <div className="cartimg">{basketbtn}</div>
