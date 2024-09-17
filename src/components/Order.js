@@ -9,6 +9,8 @@ import {
   getDocs,
   where,
   addDoc,
+  updateDoc,
+  increment,
 } from "firebase/firestore";
 import Snackbar from "./Snackbar";
 import "../style/Order.css";
@@ -114,6 +116,7 @@ const Order = () => {
       const usersRef = collection(db, "orders");
       const q2 = query(usersRef, where("ID", "==", orderref));
       const querySnapshot = await getDocs(q2);
+      const itemRef = collection(db, "itemsinstock");
 
       if (!querySnapshot.empty) {
         // If a document with the same name exists, show a message and don't add it to Firestore
@@ -127,10 +130,34 @@ const Order = () => {
         });
 
         console.log("order ADDED");
+
+        //Remove the bought items from firebase
+        orderItems.forEach(async (oitem) => {
+          const q3 = query(
+            itemRef,
+            where("ID", "==", oitem.ID),
+            where("Size", "==", oitem.Size)
+          );
+
+          const querySnapshot = await getDocs(q3);
+          if (!querySnapshot.empty) {
+            querySnapshot.forEach(async (doc) => {
+              console.log(doc.id, doc.data());
+
+              const docRef = doc.ref;
+              await updateDoc(docRef, {
+                Amount: increment(-1), // Replace 'newAmount' with your desired value
+              });
+            });
+          } else {
+            console.log("No matching documents found.");
+          }
+        });
       }
     } catch (error) {
       console.error("Error checking or adding document: ", error);
     }
+    sessionStorage.removeItem("itemSizes");
   };
 
   //saves the orderRef to the database if it doesnt already exist
