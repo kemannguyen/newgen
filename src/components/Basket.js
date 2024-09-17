@@ -267,6 +267,9 @@ function Basket() {
   return (
     <div>
       <h1 className="margintop-hd basket-title">Your Basket</h1>
+      <div className="totprice">
+        test card: 4242 4242 4242 4242, any future date, cvc.
+      </div>
       {basketItems.map((item, index) => {
         const uniqueKey = `${item.ID}-${item.Size}-${index}`; // Ensure each key is unique, even for duplicates
 
@@ -311,7 +314,6 @@ function Basket() {
           </div>
         );
       })}
-
       <div className="totprice">Total: ${totalprice}</div>
       <button className="checkoutbtn" onClick={makePayment}>
         Check out

@@ -17,6 +17,9 @@ const Header = () => {
   const [tabindex, setindex] = useState(0);
   const itemCount = useLocalStorageItemCount("myBasket");
 
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
     switch (pathname) {
       case "/":
@@ -41,6 +44,40 @@ const Header = () => {
         break;
     }
   }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > lastScrollY) {
+        // If scrolling down, hide the header
+        setShowHeader(false);
+      } else {
+        // If scrolling up, show the header
+        setShowHeader(true);
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+  const handleMouseMove = (e) => {
+    // If the mouse is near the top of the window, show the header
+    if (e.clientY < 50) {
+      setShowHeader(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   //makes the body non scrollable when nav menu is open
   useEffect(() => {
@@ -211,7 +248,13 @@ const Header = () => {
   }
 
   return (
-    <div className="header">
+    <div
+      className="header"
+      style={{
+        transform: showHeader ? "translateY(0)" : "translateY(-100%)",
+        transition: "transform 0.4s ease",
+      }}
+    >
       <img
         className="titleimg"
         src="https://drive.google.com/thumbnail?id=1wMf_FDBKDfq1amsV-2MYmW7hIvRhIBoX&sz=w1920"

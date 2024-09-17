@@ -1,9 +1,11 @@
 .side-navbar {
   position: fixed;
-  top: 80px;
+  top: 0px;
   width: 150px;
   background: #eaeaea;
-  padding: 20px;
+  padding-top: 100px;
+  padding-left: 20px;
+  padding-right: 20px;
   height: 100%;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
