@@ -13,6 +13,7 @@ import SideNavbar from "./components/SideNavbar";
 import ItemPage from "./components/ItemPage";
 import Basket from "./components/Basket";
 import Order from "./components/Order";
+import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
 const App = () => {
@@ -59,10 +60,9 @@ const App = () => {
           />
           <Route path="/shop/item/*" element={<ItemPage />} />
 
-          <Route path="/outfit-highlights" element={""} />
-          <Route path="/contact-us" element={""} />
+          <Route path="/outfit-highlights" element={<Contact />} />
+          <Route path="/contact-us" element={<Contact />} />
           <Route path="/basket" element={<Basket />} />
-          <Route path="/success" element={""} />
           <Route path="/order/*" element={<Order />} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
