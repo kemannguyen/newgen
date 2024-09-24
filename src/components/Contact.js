@@ -12,22 +12,38 @@ import FAQs from "./ContactPages/FAQs";
 const Contact = () => {
   const [component, setComp] = useState();
   const path = window.location.pathname.split("/");
+  //domain.com{0}/contact-us{1}/{2}
   var pathname = "/" + path[2];
 
-  //components change due to paths
+  //component shown on page change according to path
   useEffect(() => {
     switch (pathname) {
-      case "/details":
-        console.log("path = /details");
-        break;
       case "/myorder":
-        setComp(<Order />);
+        setComp();
         break;
-      case "/contact-us":
+      case "/details":
+        setComp("contact us page");
         break;
-      case "/order":
+      case "/shipping":
+        setComp("");
         break;
-      case "/basket":
+      case "/returns":
+        setComp();
+        break;
+      case "/about-us":
+        setComp();
+        break;
+      case "/career":
+        setComp();
+        break;
+      case "/terms":
+        setComp();
+        break;
+      case "/privacy-p":
+        setComp();
+        break;
+      case "/cookie-p":
+        setComp();
         break;
       default:
         setComp(<FAQs />);
