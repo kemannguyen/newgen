@@ -116,7 +116,7 @@
     font-size: 20px;
   }
   .header.hidden {
-    transform: translateY(50%);
+    transform: translateY(10%);
   }
 }
 
