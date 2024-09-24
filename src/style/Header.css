@@ -8,7 +8,19 @@
   width: 100vw;
   top: 0px;
   opacity: 0.9;
-  transition: 400ms;
+  transform: translateY(0);
+  transition: transform 0.4s ease;
+}
+
+@media (pointer: fine) {
+  .header.hidden {
+    transform: translateY(-100%);
+  }
+}
+@media (max-width: 420px) and (pointer: fine) {
+  .title {
+    font-size: 20px !important;
+  }
 }
 
 .titleimg {
@@ -17,11 +29,6 @@
   cursor: pointer;
   margin-left: 60px;
   margin-top: 0px;
-}
-@media (max-width: 420px) and (pointer: fine) {
-  .title {
-    font-size: 20px !important;
-  }
 }
 .navbtns {
   position: relative;
@@ -107,6 +114,9 @@
 @media (pointer: coarse) {
   .title {
     font-size: 20px;
+  }
+  .header.hidden {
+    transform: translateY(50%);
   }
 }
 

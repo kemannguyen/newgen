@@ -47,12 +47,15 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
+      var header = document.getElementById("header");
       if (window.scrollY > lastScrollY) {
         // If scrolling down, hide the header
         setShowHeader(false);
+        header.classList.add("hidden");
       } else {
         // If scrolling up, show the header
         setShowHeader(true);
+        header.classList.remove("hidden");
       }
       setLastScrollY(window.scrollY);
     };
@@ -248,13 +251,7 @@ const Header = () => {
   }
 
   return (
-    <div
-      className="header"
-      style={{
-        transform: showHeader ? "translateY(0)" : "translateY(-100%)",
-        transition: "transform 0.4s ease",
-      }}
-    >
+    <div className="header" id="header">
       <img
         className="titleimg"
         src="https://drive.google.com/thumbnail?id=1wMf_FDBKDfq1amsV-2MYmW7hIvRhIBoX&sz=w1920"

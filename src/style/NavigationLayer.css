@@ -1,7 +1,7 @@
 .bg-layercover {
   position: fixed;
   width: 100vw;
-  height: 100%;
+  height: 100vh;
   background-color: rgb(225, 225, 225);
   z-index: 20;
   opacity: 0.92;
