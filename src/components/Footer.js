@@ -8,7 +8,6 @@ const Footer = () => {
       style={{
         backgroundColor: "#333",
         color: "#fff",
-        padding: "20px",
       }}
     >
       <div>
