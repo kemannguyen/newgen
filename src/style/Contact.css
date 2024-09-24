@@ -42,7 +42,8 @@
 
 @media (max-width: 830px) {
   .contact-sidebar {
-    width: 150px;
+    width: 120px;
+    padding-left: 0px;
   }
   .sidebar-header {
     font-size: medium;
@@ -64,10 +65,12 @@
 }
 @media (pointer: coarse) {
   .contact-sidebar {
-    width: 150px;
+    width: 120px;
+    padding-left: 0px;
   }
   .sidebar-header {
     font-size: medium;
+    margin-left: 5px;
   }
   .sidebar-title {
     font-size: small;
