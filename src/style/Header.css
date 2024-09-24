@@ -1,13 +1,12 @@
 .header {
-  background-color: rgb(233, 233, 233);
+  background-color: rgb(255, 255, 255);
   display: flex;
   min-height: 70px;
-  outline: 1px solid rgb(197, 197, 197);
+  box-shadow: 1px 0 2px rgba(0, 0, 0, 0.1);
   z-index: 30;
   position: fixed;
   width: 100vw;
   top: 0px;
-  opacity: 0.9;
   transform: translateY(0);
   transition: transform 0.4s ease;
 }
@@ -15,6 +14,7 @@
 @media (pointer: fine) {
   .header.hidden {
     transform: translateY(-100%);
+    transition: transform 0.4s ease;
   }
 }
 @media (max-width: 420px) and (pointer: fine) {
