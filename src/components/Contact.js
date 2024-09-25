@@ -5,9 +5,17 @@ import { styled } from "@mui/material/styles";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import Shop from "./Shop";
-import Order from "./Order";
+
+import ContactInfo from "./ContactPages/ContactInfo";
+import OrderHelp from "./ContactPages/OrderHelp";
 import FAQs from "./ContactPages/FAQs";
+import ShippingInfo from "./ContactPages/ShippingInfo";
+import ReturnInfo from "./ContactPages/ReturnInfo";
+import AboutUs from "./ContactPages/AboutUs";
+import Career from "./ContactPages/Career";
+import TermsNCond from "./ContactPages/TermsNCond";
+import PrivacyPol from "./ContactPages/PrivacyPol";
+import CookiePol from "./ContactPages/CookiePol";
 
 const Contact = () => {
   const [component, setComp] = useState();
@@ -18,32 +26,32 @@ const Contact = () => {
   //component shown on page change according to path
   useEffect(() => {
     switch (pathname) {
-      case "/myorder":
-        setComp();
-        break;
       case "/details":
-        setComp("contact us page");
+        setComp(<ContactInfo />);
+        break;
+      case "/myorder":
+        setComp(<OrderHelp />);
         break;
       case "/shipping":
-        setComp("");
+        setComp(<ShippingInfo />);
         break;
       case "/returns":
-        setComp();
+        setComp(<ReturnInfo />);
         break;
       case "/about-us":
-        setComp();
+        setComp(<AboutUs />);
         break;
       case "/career":
-        setComp();
+        setComp(<Career />);
         break;
       case "/terms":
-        setComp();
+        setComp(<TermsNCond />);
         break;
       case "/privacy-p":
-        setComp();
+        setComp(<PrivacyPol />);
         break;
       case "/cookie-p":
-        setComp();
+        setComp(<CookiePol />);
         break;
       default:
         setComp(<FAQs />);
@@ -101,7 +109,7 @@ const Contact = () => {
           <AccordionDetails>
             <div className="sidebar-section">
               <a className="sidebar-btn" href="/contact-us/shipping">
-                Shipping optons
+                Shipping options
               </a>
             </div>
             <div className="sidebar-section">

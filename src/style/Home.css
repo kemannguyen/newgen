@@ -4,10 +4,8 @@
 .margintop40 {
   margin-top: 40px;
 }
-.fullscreen {
-  width: 100vw;
-  height: 50vw;
-  min-height: 300px;
+.home {
+  padding-bottom: 20px;
 }
 
 .slider {

@@ -38,7 +38,7 @@ const Home = ({ images, interval = 8000 }) => {
   };
 
   return (
-    <div className="margintop80 flexbox">
+    <div className="margintop80 flexbox home">
       <div className="slider ">
         <div
           className="slider-wrapper"
