@@ -7,25 +7,39 @@
 
 .info-title {
   margin-top: 30px;
-  margin-left: 100px;
   font-weight: bold;
   font-size: 60px;
+  min-width: 500px;
+  width: 50%;
   color: black;
+  margin-left: auto;
+  margin-right: auto;
 }
 .info-subheader-L {
   font-weight: bold;
   font-size: larger;
   color: black;
-  width: 80%;
-  margin-left: 100px;
+  min-width: 500px;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.info-subheader-XL {
+  font-weight: bold;
+  font-size: xx-large;
+  color: black;
+  min-width: 500px;
+  width: 50%;
+  margin-left: auto;
   margin-right: auto;
 }
 .info-subheader {
   font-weight: bold;
   font-size: medium;
   color: black;
-  width: 80%;
-  margin-left: 100px;
+  min-width: 500px;
+  width: 50%;
+  margin-left: auto;
   margin-right: auto;
 }
 .info-bold {
@@ -35,18 +49,39 @@
   font-weight: normal;
   font-size: medium;
   color: black;
-  width: 80%;
-  margin-left: 100px;
+  width: 50%;
+  min-width: 500px;
+  margin-left: auto;
   margin-right: auto;
 }
 .info-redirect {
   color: black;
 }
 
+.info-centercontainer {
+  display: flex;
+  justify-content: center;
+}
+.info-input {
+  width: 90%;
+  font-size: medium;
+}
+.info-margintop {
+  margin-top: 80px;
+}
+.info-medium {
+  font-size: medium;
+}
+.info-img {
+  width: 100px;
+  height: 100px;
+}
+
 @media (max-width: 830px) {
   .info-title {
     margin-left: 20px;
     font-size: 40px;
+    min-width: 50px;
   }
 
   .info-subheader {
@@ -55,11 +90,12 @@
     color: black;
     width: 80%;
     margin-left: 20px;
+    min-width: 50px;
   }
   .info-subheader-L {
     font-size: medium;
-
     margin-left: 20px;
+    min-width: 50px;
   }
   .info-breadtext {
     font-weight: normal;
@@ -67,5 +103,6 @@
     color: black;
     width: 80%;
     margin-left: 20px;
+    min-width: 50px;
   }
 }

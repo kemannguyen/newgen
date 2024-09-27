@@ -25,7 +25,7 @@ const FAQs = () => {
         FAQs
       </div>
       <div className="info-subheader-L">Common questions asked</div>
-      <div className="info-breadtext">
+      <div className="info-breadtext" style={{ marginTop: "20px" }}>
         <Accordion>
           <AccordionSummary
             className="sidebar-title"
@@ -90,6 +90,11 @@ const FAQs = () => {
                   <a className="info-bold">Please note</a> that the product has
                   to be in the same condition as it were when you first got it
                   for the return to be eligible.
+                </a>
+              </div>
+              <div>
+                <a className="info-redirect" href="/contact-us/returns">
+                  Request a return
                 </a>
               </div>
             </div>
