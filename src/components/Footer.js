@@ -44,6 +44,9 @@ const Footer = () => {
             <div>OUR COMPANY </div>
             <div className="section">
               <div className="section-btns">About us</div>
+              <div className="section-btns">Terms and conditions</div>
+              <div className="section-btns">Privacy policy</div>
+              <div className="section-btns">Cookie policy</div>
             </div>
           </div>
         </div>

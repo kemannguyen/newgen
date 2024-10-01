@@ -2,7 +2,7 @@ import React from "react";
 
 const ContactInfo = () => {
   return (
-    <div className="flexbox info info-centercontainer">
+    <div className="flexbox info">
       <div className="info-title" style={{ marginBottom: "20px" }}>
         Contact us
       </div>
@@ -65,13 +65,18 @@ const ContactInfo = () => {
       <div className="info-subheader-XL info-margintop">Call us</div>
       <div className="info-breadtext" style={{ marginTop: "20px" }}>
         <div>
-          <img
-            className="info-img"
-            src="https://drive.google.com/thumbnail?id=1Z5poGhDEscqZuGMT35OOh4p1rzSzB_PS&sz=w1920"
-          />
+          <a href="tel:+46701234567">
+            <img
+              className="info-img"
+              src="https://drive.google.com/thumbnail?id=16B8QZdgSBHAl9nr7cyPoyxakAEsvCGdy&sz=w1920"
+              alt="tel:+46 70123 4567"
+            />
+          </a>
         </div>
         <div>
-          <a>+46 70123 4567</a>
+          <a className="info-redirect info-bold" href="tel:+46701234567">
+            +46 70123 4567
+          </a>
         </div>
       </div>
     </div>

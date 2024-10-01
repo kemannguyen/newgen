@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import "../style/Home.css";
 import FadeInSection from "./FadeInSection";
 
-const Home = ({ images, interval = 8000 }) => {
+const Home = ({ images, interval = 4000 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const slideInterval = useRef();
   const [visible, setVisible] = useState(false);

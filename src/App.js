@@ -44,7 +44,7 @@ const App = () => {
           onCategoryChange={handleCategoryChange}
         />
         <Routes>
-          <Route path="/" element={<Home images={images} interval={8000} />} />
+          <Route path="/" element={<Home images={images} interval={4000} />} />
 
           <Route path="/shop" element={<Shop selectedCategory="" />} />
           {categories.map((category) => (
@@ -61,7 +61,6 @@ const App = () => {
           <Route path="/shop/item/*" element={<ItemPage />} />
 
           <Route path="/outfit-highlights" element={<Contact />} />
-          <Route path="/contact-us" element={<Contact />} />
           <Route path="/contact-us/*" element={<Contact />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/order/*" element={<Order />} />
