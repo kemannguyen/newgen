@@ -11,6 +11,7 @@ const OrderHelp = () => {
         <img
           className="info-imgsize"
           src="https://drive.google.com/thumbnail?id=163ONWPlPv13T-G7RFZQllVoOyR6EkX0_&sz=w1920"
+          alt=""
         />
       </div>
       <div className="info-breadtext info-bold">
@@ -21,6 +22,7 @@ const OrderHelp = () => {
         <img
           className="info-imgsize"
           src="https://drive.google.com/thumbnail?id=1pO3HsqicNjaWH9F00bfvtqUpugFqETfK&sz=w1920"
+          alt=""
         />
       </div>
       <div className="info-breadtext info-bold">
@@ -30,8 +32,8 @@ const OrderHelp = () => {
       <div className="info-img">
         <img
           className="info-imgsize"
-          src="https://drive.google.com/thumbnail?id=1Ni1nF1FsGHtIclilDLXU9o7sAASklTAB&sz=w1920
-"
+          src="https://drive.google.com/thumbnail?id=1Ni1nF1FsGHtIclilDLXU9o7sAASklTAB&sz=w1920"
+          alt=""
         />
       </div>
     </div>

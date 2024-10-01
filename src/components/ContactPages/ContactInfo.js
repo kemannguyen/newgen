@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import Snackbar from "../Snackbar";
 
 const ContactInfo = () => {
+  const [snackbarVisible, setSnackbarVisible] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [name, setName] = useState("");
+  const [topic, setTopic] = useState("Can't find order");
+  const [submitmsg, setSubmitmsg] = useState("");
+
+  const showSnackbar = (message) => {
+    setSnackbarMessage(message);
+    setSnackbarVisible(true);
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarVisible(false);
+  };
+
+  const handleNameChange = (e) => {
+    setName(e.target.value);
+  };
+
+  const handleTopicChange = (e) => {
+    setTopic(e.target.value);
+  };
+
+  const handleSubmitChange = (e) => {
+    setSubmitmsg(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    //SEND MAIL TO COMPANY WITH THIS INFO
+    console.log(name, topic, submitmsg);
+    showSnackbar("Question has been submitted!");
+  };
+
   return (
     <div className="flexbox info">
       <div className="info-title" style={{ marginBottom: "20px" }}>
@@ -9,57 +43,62 @@ const ContactInfo = () => {
       <div className="info-subheader-XL">Email us</div>
       <div className="info-breadtext" style={{ marginTop: "20px" }}>
         <div>
-          <form>
+          <div>
             <div>
-              <div>
-                <label for="fname">Full Name</label>
-              </div>
-              <div>
-                <input
-                  className="info-input"
-                  type="text"
-                  id="fullname"
-                  name="fullname"
-                  placeholder="Your name.."
-                />
-              </div>
+              <label>Full Name</label>
             </div>
             <div>
-              <div>
-                <label for="Subject">What can we help you with?</label>
-              </div>
-              <div>
-                <select id="Subject" name="Subject" className="info-input">
-                  <option value="Can't find order">
-                    I can't find my order
-                  </option>
-                  <option value="Return order">
-                    I would like to return my order
-                  </option>
-                  <option value="Payment">Payment</option>
-                  <option value="Other">Other </option>
-                </select>
-              </div>
+              <input
+                className="info-input"
+                placeholder="Your name.."
+                value={name}
+                onChange={handleNameChange}
+              />
+            </div>
+          </div>
+          <div>
+            <div>
+              <label>What can we help you with?</label>
             </div>
             <div>
-              <div>
-                <label for="Question">Question</label>
-              </div>
-              <div>
-                <textarea
-                  className="info-input"
-                  id="Question"
-                  name="Question"
-                  placeholder="Write your question here.."
-                  style={{ height: "200px", fontSize: "18px" }}
-                ></textarea>
-              </div>
+              <select
+                className="info-input"
+                value={topic}
+                onChange={handleTopicChange}
+              >
+                <option value="Can't find order">I can't find my order</option>
+                <option value="Return order">
+                  I would like to return my order
+                </option>
+                <option value="Payment">Payment</option>
+                <option value="Other">Other </option>
+              </select>
             </div>
-            <br />
+          </div>
+          <div>
             <div>
-              <input className="info-medium" type="submit" value="Submit" />
+              <label for="Question">Question</label>
             </div>
-          </form>
+            <div>
+              <textarea
+                className="info-input"
+                placeholder="Write your question here.."
+                value={submitmsg}
+                onChange={handleSubmitChange}
+                style={{ height: "200px", fontSize: "18px" }}
+              ></textarea>
+            </div>
+          </div>
+          <br />
+          <div>
+            <button
+              onClick={() => {
+                handleButtonClick();
+              }}
+            >
+              submit
+            </button>
+          </div>
         </div>
       </div>
       <div className="info-subheader-XL info-margintop">Call us</div>
@@ -69,7 +108,7 @@ const ContactInfo = () => {
             <img
               className="info-icon"
               src="https://drive.google.com/thumbnail?id=16B8QZdgSBHAl9nr7cyPoyxakAEsvCGdy&sz=w1920"
-              alt="tel:+46 70123 4567"
+              alt=""
             />
           </a>
         </div>
@@ -79,6 +118,13 @@ const ContactInfo = () => {
           </a>
         </div>
       </div>
+      {snackbarVisible && (
+        <Snackbar
+          message={snackbarMessage}
+          duration={5000}
+          onClose={handleCloseSnackbar}
+        />
+      )}
     </div>
   );
 };
