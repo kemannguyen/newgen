@@ -67,7 +67,7 @@ const ContactInfo = () => {
         <div>
           <a href="tel:+46701234567">
             <img
-              className="info-img"
+              className="info-icon"
               src="https://drive.google.com/thumbnail?id=16B8QZdgSBHAl9nr7cyPoyxakAEsvCGdy&sz=w1920"
               alt="tel:+46 70123 4567"
             />
