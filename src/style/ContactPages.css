@@ -81,7 +81,8 @@
 }
 
 .info-listcontainer {
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
 }
 .info-list {
   padding-left: 10px;
