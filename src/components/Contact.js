@@ -124,7 +124,7 @@ const Contact = () => {
             className="sidebar-title"
             expandIcon={<ArrowDropDownIcon />}
           >
-            Our Compnay
+            Our Company
           </AccordionSummary>
           <AccordionDetails>
             <div className="sidebar-section">

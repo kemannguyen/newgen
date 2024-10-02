@@ -15,6 +15,7 @@ import Basket from "./components/Basket";
 import Order from "./components/Order";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import OutfitHighlight from "./components/OutfitHighlight";
 
 const App = () => {
   const images = [
@@ -60,7 +61,7 @@ const App = () => {
           />
           <Route path="/shop/item/*" element={<ItemPage />} />
 
-          <Route path="/outfit-highlights" element={<Contact />} />
+          <Route path="/outfit-highlights" element={<OutfitHighlight />} />
           <Route path="/contact-us/*" element={<Contact />} />
           <Route path="/basket" element={<Basket />} />
           <Route path="/order/*" element={<Order />} />
