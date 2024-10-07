@@ -262,7 +262,11 @@ function Basket() {
   };
   // If basket is empty, display a message
   if (basketItems.length === 0) {
-    return <div className="margintop-hd flexbox">Your basket is empty!</div>;
+    return (
+      <div className="margintop-hd flexbox flex-center-h">
+        Your basket is empty!
+      </div>
+    );
   }
   return (
     <div className="flexbox">
