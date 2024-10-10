@@ -143,27 +143,27 @@ const Order = () => {
             where("ID", "==", oitem.ID),
             where("Size", "==", oitem.Size)
           );
-          // console.log(
-          //   "FIREBASE UPDATE",
-          //   " - ID:",
-          //   oitem.ID,
-          //   " | Size:",
-          //   oitem.Size
-          // );
-          // const querySnapshot = await getDocs(q3);
-          // if (!querySnapshot.empty) {
-          //   console.log("snapshot found ", querySnapshot);
-          //   querySnapshot.forEach(async (doc) => {
-          //     console.log(doc.id, doc.data());
+          console.log(
+            "FIREBASE UPDATE",
+            " - ID:",
+            oitem.ID,
+            " | Size:",
+            oitem.Size
+          );
+          const querySnapshot = await getDocs(q3);
+          if (!querySnapshot.empty) {
+            console.log("snapshot found ", querySnapshot);
+            querySnapshot.forEach(async (doc) => {
+              console.log(doc.id, doc.data());
 
-          //     const docRef = doc.ref;
-          //     await updateDoc(docRef, {
-          //       Amount: increment(-1), // Replace 'newAmount' with your desired value
-          //     });
-          //   });
-          // } else {
-          //   console.log("No matching documents found.");
-          // }
+              const docRef = doc.ref;
+              await updateDoc(docRef, {
+                Amount: increment(-1), // Replace 'newAmount' with your desired value
+              });
+            });
+          } else {
+            console.log("No matching documents found.");
+          }
         });
       }
     } catch (error) {
