@@ -56,7 +56,7 @@ const Order = () => {
   useEffect(() => {
     const fetchData = async () => {
       //clear basket after buy
-      const basketitems = JSON.parse(localStorage.getItem("mybasket"));
+      const basketitems = JSON.parse(localStorage.getItem("myBasket"));
       console.log(basketitems);
       setoItems(basketitems);
 
