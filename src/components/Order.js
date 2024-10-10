@@ -134,11 +134,11 @@ const Order = () => {
         //Remove the bought items from firebase
         orderItems.forEach(async (oitem) => {
           console.log("oitem: ", oitem);
-          // const q3 = query(
-          //   itemRef,
-          //   where("ID", "==", oitem.ID),
-          //   where("Size", "==", oitem.Size)
-          // );
+          const q3 = query(
+            itemRef,
+            where("ID", "==", oitem.ID),
+            where("Size", "==", oitem.Size)
+          );
           // console.log(
           //   "FIREBASE UPDATE",
           //   " - ID:",
