@@ -152,6 +152,7 @@ const Order = () => {
             oitem.Size
           );
           const querySnapshot = await getDocs(q3);
+          console.log("pending snap: ", querySnapshot, " ", oitem.ID);
           if (!querySnapshot.empty) {
             console.log("snapshot found ", querySnapshot);
             querySnapshot.forEach(async (doc) => {
