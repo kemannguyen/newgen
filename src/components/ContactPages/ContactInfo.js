@@ -4,7 +4,8 @@ import Snackbar from "../Snackbar";
 const ContactInfo = () => {
   const [snackbarVisible, setSnackbarVisible] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isEmailValid, setIsEmailValid] = useState(null);
   const [topic, setTopic] = useState("Can't find order");
   const [submitmsg, setSubmitmsg] = useState("");
 
@@ -17,8 +18,9 @@ const ContactInfo = () => {
     setSnackbarVisible(false);
   };
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+    setIsEmailValid(isValidEmail(e.target.value));
   };
 
   const handleTopicChange = (e) => {
@@ -31,8 +33,16 @@ const ContactInfo = () => {
 
   const handleButtonClick = () => {
     //SEND MAIL TO COMPANY WITH THIS INFO
-    console.log(name, topic, submitmsg);
+    console.log(email, topic, submitmsg);
     showSnackbar("Question has been submitted!");
+    setEmail("");
+    setSubmitmsg("");
+  };
+
+  const isValidEmail = (email) => {
+    // Regular expression to validate email addresses
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    return emailRegex.test(email);
   };
 
   return (
@@ -45,14 +55,27 @@ const ContactInfo = () => {
         <div>
           <div>
             <div>
-              <label>Full Name</label>
+              <label>Email </label>{" "}
+              {email != "" ? (
+                <span>
+                  {" "}
+                  {isEmailValid === true && (
+                    <span style={{ color: "green" }}> - Valid Email</span>
+                  )}
+                  {isEmailValid === false && (
+                    <span style={{ color: "red" }}> - Invalid Email</span>
+                  )}
+                </span>
+              ) : (
+                <span></span>
+              )}
             </div>
             <div>
               <input
                 className="info-input"
-                placeholder="Your name.."
-                value={name}
-                onChange={handleNameChange}
+                placeholder="Enter your Email.."
+                value={email}
+                onChange={handleEmailChange}
               />
             </div>
           </div>
@@ -90,8 +113,10 @@ const ContactInfo = () => {
             </div>
           </div>
           <br />
+
           <div>
             <button
+              disabled={!isEmailValid}
               onClick={() => {
                 handleButtonClick();
               }}
