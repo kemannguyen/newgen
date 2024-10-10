@@ -36,7 +36,7 @@ const ShippingInfo = () => {
         </div>
       </div>
 
-      <div className="info-breadtext" style={{ marginTop: "50px" }}>
+      <div className="info-breadtext" style={{ marginTop: "20px" }}>
         We strive to make your shopping experience seamless and efficient,
         providing you with flexible options to suit your needs. Shop with us
         today and enjoy fast and reliable shipping to anywhere in the world!
