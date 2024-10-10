@@ -8,7 +8,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
 const FAQs = () => {
   const Accordion = styled((props) => (
-    <MuiAccordion disableGutters elevation={0} rounded {...props} />
+    <MuiAccordion disableGutters elevation={0} {...props} />
   ))(({ theme }) => ({
     border: `1px solid  ${theme.palette.divider}`,
     "&:not(:last-child)": {
@@ -60,7 +60,7 @@ const FAQs = () => {
           </AccordionSummary>
           <AccordionDetails>
             <div className="sidebar-section">
-              <a className="sidebar-btn">We shipp everywhere!</a>
+              <span className="sidebar-btn">We shipp everywhere!</span>
             </div>
             <div className="sidebar-section">
               <a className="info-redirect" href="/contact-us/shipping">
@@ -79,18 +79,18 @@ const FAQs = () => {
           <AccordionDetails>
             <div className="sidebar-section">
               <div>
-                <a className="sidebar-btn">
+                <span className="sidebar-btn">
                   Yes, after you've completed your purchase you have{" "}
-                  <a className="info-bold">30 days</a> to return your product if
-                  you're not satisfied.
-                </a>
+                  <span className="info-bold">30 days</span> to return your
+                  product if you're not satisfied.
+                </span>
               </div>
               <div>
-                <a className="sidebar-btn">
-                  <a className="info-bold">Please note</a> that the product has
-                  to be in the same condition as it were when you first got it
-                  for the return to be eligible.
-                </a>
+                <span className="sidebar-btn">
+                  <span className="info-bold">Please note</span> that the
+                  product has to be in the same condition as it were when you
+                  first got it for the return to be eligible.
+                </span>
               </div>
               <div>
                 <a className="info-redirect" href="/contact-us/returns">
@@ -110,10 +110,10 @@ const FAQs = () => {
           <AccordionDetails>
             <div className="sidebar-section">
               <div>
-                <a className="sidebar-btn">
+                <span className="sidebar-btn">
                   When your order has been sent from our storage, you'll recive
                   an Universal Parcel Tracking number in your mail!
-                </a>
+                </span>
               </div>
               <br></br>
               <div>
@@ -139,16 +139,16 @@ const FAQs = () => {
           <AccordionDetails>
             <div className="sidebar-section">
               <div>
-                <a className="sidebar-btn">
+                <span className="sidebar-btn">
                   This usually depends on where you are located, but the
                   delivery usually takes:
-                </a>
+                </span>
               </div>
               <div>
-                <a className="info-bold">EU: 5-7 days.</a>
+                <span className="info-bold">EU: 5-7 days.</span>
               </div>
               <div>
-                <a className="info-bold">Outside: 10-14 days.</a>
+                <span className="info-bold">Outside: 10-14 days.</span>
               </div>
             </div>
           </AccordionDetails>
@@ -162,11 +162,11 @@ const FAQs = () => {
           </AccordionSummary>
           <AccordionDetails>
             <div className="sidebar-section">
-              <a className="sidebar-btn">
+              <span className="sidebar-btn">
                 Currently we only accept debit card payments such as VISA,
                 Mastercard etc. But we are working on implementing more payment
                 methods in the near future.
-              </a>
+              </span>
             </div>
           </AccordionDetails>
         </Accordion>

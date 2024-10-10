@@ -37,6 +37,11 @@ const ShippingInfo = () => {
       </div>
 
       <div className="info-breadtext" style={{ marginTop: "20px" }}>
+        These estimated times are calculated within the EU,{" "}
+        <span className="info-bold">
+          {" "}
+          outside EU it may take additionally 10 days.{" "}
+        </span>{" "}
         We strive to make your shopping experience seamless and efficient,
         providing you with flexible options to suit your needs. Shop with us
         today and enjoy fast and reliable shipping to anywhere in the world!

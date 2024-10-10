@@ -10,11 +10,11 @@ const FadeInSection = ({ children }) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setIsVisible(true);
-            observer.unobserve(entry.target); // Stop observing once visible (so it only animates once)
+            observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.4 } // Trigger when 10% of the section is visible
+      { threshold: 0.4 }
     );
 
     if (sectionRef.current) {
@@ -27,6 +27,16 @@ const FadeInSection = ({ children }) => {
       }
     };
   }, []);
+
+  // Force reflow
+  useEffect(() => {
+    if (isVisible && sectionRef.current) {
+      const node = sectionRef.current;
+      node.classList.remove("visible"); // Temporarily remove the class
+      void node.offsetWidth; // Trigger reflow
+      node.classList.add("visible"); // Re-add the class to restart the animation
+    }
+  }, [isVisible]);
 
   return (
     <div className={`fade-in ${isVisible ? "visible" : ""}`} ref={sectionRef}>

@@ -100,7 +100,7 @@ const ContactInfo = () => {
           </div>
           <div>
             <div>
-              <label for="Question">Question</label>
+              <label>Question</label>
             </div>
             <div>
               <textarea
@@ -137,7 +137,7 @@ const ContactInfo = () => {
             />
           </a>
         </div>
-        <div>
+        <div style={{ marginBottom: "50px" }}>
           <a className="info-redirect info-bold" href="tel:+46701234567">
             +46 70123 4567
           </a>
