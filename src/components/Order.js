@@ -56,6 +56,10 @@ const Order = () => {
   useEffect(() => {
     const fetchData = async () => {
       //clear basket after buy
+      const basketitems = JSON.parse(localStorage.getItem("mybasket"));
+      console.log(basketitems);
+      setoItems(basketitems);
+
       localStorage.clear();
       window.dispatchEvent(new Event("storageChange"));
 
@@ -68,7 +72,6 @@ const Order = () => {
         const querySnapshot = await getDocs(q);
         const items = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
         setcItems(items);
-        console.log("citems", items);
         sessionStorage.setItem("clothingItems", JSON.stringify(items));
         console.log("fetch all");
       }
@@ -100,8 +103,6 @@ const Order = () => {
         setShipping(session.total_details.amount_shipping / 100);
         const items = lineItems.map((lineItem) => lineItem.description);
 
-        //***** HAVE TO CHANGE SETOITEMS, doenst have ID AND SIZE */
-        setoItems(items);
         console.log("sess", session.total_details.amount_shipping);
       } catch (error) {
         console.error("Error fetching session data:", error);
