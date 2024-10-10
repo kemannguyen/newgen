@@ -171,15 +171,15 @@ const Order = () => {
           }
           const sessionData = JSON.parse(sessionStorage.getItem("itemsSizes"));
 
-          const updatedData = sessionData.filter((items) => items.id !== intID);
-          sessionStorage.setItem("itemsSize", JSON.stringify(updatedData));
+          const updatedData = sessionData.filter((items) => items.ID !== intID);
+          sessionStorage.setItem("itemsSizes", JSON.stringify(updatedData));
         });
       }
       //remove the old itemSizes
     } catch (error) {
       console.error("Error checking or adding document: ", error);
     }
-    sessionStorage.removeItem("itemSizes");
+    //sessionStorage.removeItem("itemSizes");
   };
 
   //saves the orderRef to the database if it doesnt already exist
