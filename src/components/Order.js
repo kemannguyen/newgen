@@ -129,7 +129,7 @@ const Order = () => {
           sessID: patharr[2],
         });
 
-        console.log("order ADDED");
+        console.log("order ADDED", orderItems);
 
         //Remove the bought items from firebase
         orderItems.forEach(async (oitem) => {
