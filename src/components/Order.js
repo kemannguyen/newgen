@@ -167,8 +167,13 @@ const Order = () => {
           } else {
             console.log("No matching documents found.");
           }
+          const sessionData = JSON.parse(sessionStorage.getItem("itemsSizes"));
+
+          const updatedData = sessionData.filter((items) => items.id !== intID);
+          sessionStorage.setItem("itemsSize", JSON.stringify(updatedData));
         });
       }
+      //remove the old itemSizes
     } catch (error) {
       console.error("Error checking or adding document: ", error);
     }
