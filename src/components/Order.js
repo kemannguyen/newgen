@@ -139,9 +139,10 @@ const Order = () => {
 
         orderItems.forEach(async (oitem) => {
           console.log("oitem: ", oitem);
+          const intID = +oitem.ID;
           const q3 = query(
             itemRef,
-            where("ID", "==", oitem.ID),
+            where("ID", "==", intID),
             where("Size", "==", oitem.Size)
           );
           console.log(
