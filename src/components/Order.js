@@ -68,6 +68,7 @@ const Order = () => {
         const querySnapshot = await getDocs(q);
         const items = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
         setcItems(items);
+        console.log("citems", items);
         sessionStorage.setItem("clothingItems", JSON.stringify(items));
         console.log("fetch all");
       }
@@ -98,6 +99,8 @@ const Order = () => {
         setAdress(session.shipping_details.address);
         setShipping(session.total_details.amount_shipping / 100);
         const items = lineItems.map((lineItem) => lineItem.description);
+
+        //***** HAVE TO CHANGE SETOITEMS, doenst have ID AND SIZE */
         setoItems(items);
         console.log("sess", session.total_details.amount_shipping);
       } catch (error) {
@@ -132,6 +135,7 @@ const Order = () => {
         console.log("order ADDED", orderItems);
 
         //Remove the bought items from firebase
+
         orderItems.forEach(async (oitem) => {
           console.log("oitem: ", oitem);
           const q3 = query(
