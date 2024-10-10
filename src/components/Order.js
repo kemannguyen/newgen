@@ -24,6 +24,7 @@ const Order = () => {
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
   const [orderItems, setoItems] = useState([]);
+  const [orderManage, setOrderMange] = useState([]);
   const [showItems, setShowItems] = useState([]);
   const [once, setOnce] = useState(false);
   const [once2, setOnce2] = useState(false);
@@ -58,7 +59,7 @@ const Order = () => {
       //clear basket after buy
       const basketitems = JSON.parse(localStorage.getItem("myBasket"));
       console.log(basketitems);
-      setoItems(basketitems);
+      setOrderMange(basketitems);
 
       localStorage.clear();
       window.dispatchEvent(new Event("storageChange"));
@@ -102,6 +103,7 @@ const Order = () => {
         setAdress(session.shipping_details.address);
         setShipping(session.total_details.amount_shipping / 100);
         const items = lineItems.map((lineItem) => lineItem.description);
+        setoItems(items);
 
         console.log("sess", session.total_details.amount_shipping);
       } catch (error) {
@@ -133,11 +135,11 @@ const Order = () => {
           sessID: patharr[2],
         });
 
-        console.log("order ADDED", orderItems);
+        console.log("order ADDED", orderManage);
 
         //Remove the bought items from firebase
 
-        orderItems.forEach(async (oitem) => {
+        orderManage.forEach(async (oitem) => {
           console.log("oitem: ", oitem);
           const intID = +oitem.ID;
           const q3 = query(
