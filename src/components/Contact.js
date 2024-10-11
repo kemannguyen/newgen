@@ -132,11 +132,11 @@ const Contact = () => {
                 About us
               </a>
             </div>
-            <div className="sidebar-section">
+            {/* <div className="sidebar-section">
               <a className="sidebar-btn" href="/contact-us/career">
                 Career
               </a>
-            </div>
+            </div> */}
           </AccordionDetails>
         </Accordion>
         <Accordion>

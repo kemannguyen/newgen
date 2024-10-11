@@ -16,16 +16,27 @@ const Footer = () => {
             <div>COSTUMER CARE</div>
             <div className="section">
               <div className="section-btns">
-                <a href="/order" className="section-btn">
+                <a href="/contact-us/details" className="section-btn">
                   Contact us
                 </a>
               </div>
               <div className="section-btns">
-                <a href="/order" className="section-btn">
+                <a href="/contact-us/myorder" className="section-btn">
                   My order
                 </a>
               </div>
-              <div className="section-btn">Payment</div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/FAQ" className="section-btn">
+                  Payment
+                </a>
+              </div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/FAQ" className="section-btn">
+                  FAQs
+                </a>
+              </div>
             </div>
           </div>
           <div className="section-text">
@@ -36,17 +47,47 @@ const Footer = () => {
                   Track my order
                 </a>
               </div>
-              <div className="section-btns">Shipping options</div>
-              <div className="section-btns">Returns</div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/shipping" className="section-btn">
+                  Shipping options
+                </a>
+              </div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/returns" className="section-btn">
+                  Returns
+                </a>
+              </div>
             </div>
           </div>
           <div className="section-text">
             <div>OUR COMPANY </div>
             <div className="section">
-              <div className="section-btns">About us</div>
-              <div className="section-btns">Terms and conditions</div>
-              <div className="section-btns">Privacy policy</div>
-              <div className="section-btns">Cookie policy</div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/about-us" className="section-btn">
+                  About us{" "}
+                </a>
+              </div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/terms" className="section-btn">
+                  Terms and conditions
+                </a>
+              </div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/privacy-p" className="section-btn">
+                  Privacy policy
+                </a>
+              </div>
+              <div className="section-btns">
+                {" "}
+                <a href="/contact-us/cookie-p" className="section-btn">
+                  Cookie policy
+                </a>
+              </div>
             </div>
           </div>
         </div>
