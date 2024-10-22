@@ -49,6 +49,7 @@ const ReturnInfo = () => {
     showSnackbar("Question has been submitted!");
     setOrderID("");
     setSubmitmsg("");
+    setValidOrderID(false);
   };
 
   const handleValidation = async () => {
@@ -153,7 +154,9 @@ const ReturnInfo = () => {
         <div>
           <div>
             <div>
-              <label className="info-bold">Order ID</label>{" "}
+              <label className="info-bold">
+                Order ID <a style={{ color: "red" }}>*</a>
+              </label>{" "}
               {validCheck ? (
                 <span>
                   {isOrderIDValid === true && (
@@ -190,7 +193,8 @@ const ReturnInfo = () => {
           <div>
             <div>
               <label className="info-bold">
-                Which item do you want to return?
+                Which item do you want to return?{" "}
+                <a style={{ color: "red" }}>*</a>
               </label>
             </div>
             <div>
@@ -204,7 +208,9 @@ const ReturnInfo = () => {
           </div>
           <div>
             <div>
-              <label className="info-bold">Why do you want to return it?</label>
+              <label className="info-bold">
+                Why do you want to return it? <a style={{ color: "red" }}>*</a>
+              </label>
             </div>
             <div>
               <textarea
@@ -218,10 +224,10 @@ const ReturnInfo = () => {
           </div>
           <br />
 
-          <div>
+          <div style={{ marginBottom: "40px" }}>
             <button
               className="info-bold"
-              disabled={!isOrderIDValid}
+              disabled={!isOrderIDValid || item === "" || submitmsg === ""}
               onClick={() => {
                 handleButtonClick();
               }}
@@ -232,43 +238,6 @@ const ReturnInfo = () => {
         </div>
       </div>
 
-      <div className="info-subheader-L" style={{ marginTop: "50px" }}>
-        Shipping Options:
-      </div>
-      <div className="info-breadtext" style={{ marginTop: "10px" }}>
-        <div className="info-listcontainer">
-          <div>∘ </div>
-          <div className="info-list">
-            <span className="info-bold">Standard Shipping: </span>
-            Starting from just $5, our standard shipping option is both
-            economical and dependable, ensuring your package arrives within 5-12
-            business days.
-          </div>
-        </div>
-        <div className="info-listcontainer">
-          <div>∘ </div>
-          <div className="info-list">
-            <span className="info-bold">Express Shipping: </span>
-            For those who need their items in a hurry, we offer express shipping
-            starting at €15. With this service, your order will be prioritized
-            and delivered within 2-5 business days.
-          </div>
-        </div>
-      </div>
-
-      <div
-        className="info-breadtext"
-        style={{ marginTop: "20px", marginBottom: "40px" }}
-      >
-        These estimated times are calculated within the EU,{" "}
-        <span className="info-bold">
-          {" "}
-          outside EU it may take additionally 10 days.{" "}
-        </span>{" "}
-        We strive to make your shopping experience seamless and efficient,
-        providing you with flexible options to suit your needs. Shop with us
-        today and enjoy fast and reliable shipping to anywhere in the world!
-      </div>
       {snackbarVisible && (
         <Snackbar
           message={snackbarMessage}
