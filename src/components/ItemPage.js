@@ -180,10 +180,12 @@ function ItemPage() {
   };
 
   if (!item)
-    return <div className="margintop100 marginleft80 ">Item not found!</div>;
+    return (
+      <div className="margintop100 marginleft80 flexbox">Item not found!</div>
+    );
 
   return (
-    <div className="margintop100 marginleft">
+    <div className="margintop100 marginleft flexbox">
       <div className=" item-page">
         <h1>{item.Name}</h1>
         <img className="item-image" src={item.Image} alt="" />

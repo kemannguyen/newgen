@@ -17,6 +17,9 @@ const Header = () => {
   const [tabindex, setindex] = useState(0);
   const itemCount = useLocalStorageItemCount("myBasket");
 
+  const [showHeader, setShowHeader] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
   useEffect(() => {
     switch (pathname) {
       case "/":
@@ -28,7 +31,7 @@ const Header = () => {
       case "/outfit-highlights":
         setindex(2);
         break;
-      case "/about-us":
+      case "/contact-us":
         setindex(3);
         break;
       case "/order":
@@ -41,6 +44,43 @@ const Header = () => {
         break;
     }
   }, [pathname]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      var header = document.getElementById("header");
+      if (window.scrollY > lastScrollY) {
+        // If scrolling down, hide the header
+        setShowHeader(false);
+        header.classList.add("hidden");
+      } else {
+        // If scrolling up, show the header
+        setShowHeader(true);
+        header.classList.remove("hidden");
+      }
+      setLastScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
+  const handleMouseMove = (e) => {
+    // If the mouse is near the top of the window, show the header
+    if (e.clientY < 50) {
+      setShowHeader(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   //makes the body non scrollable when nav menu is open
   useEffect(() => {
@@ -71,9 +111,9 @@ const Header = () => {
     navigate("/outfit-highlights");
   };
 
-  const ToAbtUs = () => {
+  const ToContactUS = () => {
     window.scrollTo(0, 0);
-    navigate("/about-us");
+    navigate("/contact-us");
   };
 
   const ToOrder = () => {
@@ -149,19 +189,19 @@ const Header = () => {
     );
   }
 
-  let abtusbtn;
+  let contactusbtn;
   if (tabindex === 3) {
-    abtusbtn = (
-      <span className="navbtn-active" onClick={ToAbtUs}>
+    contactusbtn = (
+      <span className="navbtn-active" onClick={ToContactUS}>
         {" "}
-        about us
+        contact us
       </span>
     );
   } else {
-    abtusbtn = (
-      <span className="navbtn" onClick={ToAbtUs}>
+    contactusbtn = (
+      <span className="navbtn" onClick={ToContactUS}>
         {" "}
-        about us
+        contact us
       </span>
     );
   }
@@ -211,7 +251,7 @@ const Header = () => {
   }
 
   return (
-    <div className="header">
+    <div className="header" id="header">
       <img
         className="titleimg"
         src="https://drive.google.com/thumbnail?id=1wMf_FDBKDfq1amsV-2MYmW7hIvRhIBoX&sz=w1920"
@@ -222,8 +262,8 @@ const Header = () => {
       <div className="navbtns">
         {homebtn}
         {shopbtn}
-        {ootdbtn}
-        {abtusbtn}
+        {/* {ootdbtn} */}
+        {contactusbtn}
         {orderbtn}
       </div>
       <div className="cartimg">{basketbtn}</div>

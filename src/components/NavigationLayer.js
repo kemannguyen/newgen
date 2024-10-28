@@ -20,7 +20,7 @@ const NavigationLayer = ({ openMenu }) => {
   };
   const ToAbtUs = () => {
     window.scrollTo(0, 0);
-    navigate("/about-us");
+    navigate("/contact-us");
     openMenu(false);
   };
   const ToOOTD = () => {
@@ -49,11 +49,11 @@ const NavigationLayer = ({ openMenu }) => {
         <p className="navmenu-btn" onClick={ToMenu}>
           Shop
         </p>
-        <p className="navmenu-btn" onClick={ToOOTD}>
+        {/* <p className="navmenu-btn" onClick={ToOOTD}>
           Outfit highlights
-        </p>
+        </p> */}
         <p className="navmenu-btn" onClick={ToAbtUs}>
-          About us
+          Contact us
         </p>
         <p className="navmenu-btn" onClick={ToOrder}>
           Find order

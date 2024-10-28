@@ -1,0 +1,32 @@
+.footer-class {
+  margin-top: 0px;
+  z-index: 50 !important;
+  position: absolute;
+  width: 100vw;
+}
+.footer-container {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.section-text {
+  flex-direction: column;
+}
+.section {
+  font-size: smaller;
+  margin-top: 10px;
+  padding-bottom: 10px;
+}
+.section-btns {
+  margin-bottom: 10px;
+}
+.section-btn {
+  color: rgb(255, 255, 255);
+  font-style: normal;
+  text-decoration-line: none;
+}
+
+.watermark {
+  font-size: small;
+}

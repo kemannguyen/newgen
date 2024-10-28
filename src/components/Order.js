@@ -9,6 +9,8 @@ import {
   getDocs,
   where,
   addDoc,
+  updateDoc,
+  increment,
 } from "firebase/firestore";
 import Snackbar from "./Snackbar";
 import "../style/Order.css";
@@ -22,6 +24,7 @@ const Order = () => {
   const [cTotal, setcTotal] = useState();
   const [cItems, setcItems] = useState([]);
   const [orderItems, setoItems] = useState([]);
+  const [orderManage, setOrderMange] = useState([]);
   const [showItems, setShowItems] = useState([]);
   const [once, setOnce] = useState(false);
   const [once2, setOnce2] = useState(false);
@@ -54,6 +57,10 @@ const Order = () => {
   useEffect(() => {
     const fetchData = async () => {
       //clear basket after buy
+      const basketitems = JSON.parse(localStorage.getItem("myBasket"));
+      console.log(basketitems);
+      setOrderMange(basketitems);
+
       localStorage.clear();
       window.dispatchEvent(new Event("storageChange"));
 
@@ -97,6 +104,7 @@ const Order = () => {
         setShipping(session.total_details.amount_shipping / 100);
         const items = lineItems.map((lineItem) => lineItem.description);
         setoItems(items);
+
         console.log("sess", session.total_details.amount_shipping);
       } catch (error) {
         console.error("Error fetching session data:", error);
@@ -114,6 +122,7 @@ const Order = () => {
       const usersRef = collection(db, "orders");
       const q2 = query(usersRef, where("ID", "==", orderref));
       const querySnapshot = await getDocs(q2);
+      const itemRef = collection(db, "itemsinstock");
 
       if (!querySnapshot.empty) {
         // If a document with the same name exists, show a message and don't add it to Firestore
@@ -126,11 +135,51 @@ const Order = () => {
           sessID: patharr[2],
         });
 
-        console.log("order ADDED");
+        console.log("order ADDED", orderManage);
+
+        //Remove the bought items from firebase
+
+        orderManage.forEach(async (oitem) => {
+          console.log("oitem: ", oitem);
+          const intID = +oitem.ID;
+          const q3 = query(
+            itemRef,
+            where("ID", "==", intID),
+            where("Size", "==", oitem.Size)
+          );
+          console.log(
+            "FIREBASE UPDATE",
+            " - ID:",
+            oitem.ID,
+            " | Size:",
+            oitem.Size
+          );
+          const querySnapshot = await getDocs(q3);
+          console.log("pending snap: ", querySnapshot, " ", oitem.ID);
+          if (!querySnapshot.empty) {
+            console.log("snapshot found ", querySnapshot);
+            querySnapshot.forEach(async (doc) => {
+              console.log(doc.id, doc.data());
+
+              const docRef = doc.ref;
+              await updateDoc(docRef, {
+                Amount: increment(-1), // Replace 'newAmount' with your desired value
+              });
+            });
+          } else {
+            console.log("No matching documents found.");
+          }
+          const sessionData = JSON.parse(sessionStorage.getItem("itemsSizes"));
+
+          const updatedData = sessionData.filter((items) => items.ID !== intID);
+          sessionStorage.setItem("itemsSizes", JSON.stringify(updatedData));
+        });
       }
+      //remove the old itemSizes
     } catch (error) {
       console.error("Error checking or adding document: ", error);
     }
+    //sessionStorage.removeItem("itemSizes");
   };
 
   //saves the orderRef to the database if it doesnt already exist
@@ -208,8 +257,9 @@ const Order = () => {
 
   if (showItems.length === 0) {
     return (
-      <div className="margintop-hd find-order-container ">
+      <div className="margintop-hd find-order-container flexbox">
         <div className="find-order-text">Find your order</div>
+        test order ID: pi_3PveyTRwzgwWxDaI14tYlRLH
         <div>
           <input
             className="find-order-input"
@@ -235,7 +285,7 @@ const Order = () => {
   }
 
   return (
-    <div className="margintop100">
+    <div className="margintop100 flexbox">
       <div className="order-text">
         <div className="order-title">Order: {orderID}</div>
         <div>{cEmail}</div>

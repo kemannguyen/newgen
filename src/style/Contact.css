@@ -1,0 +1,89 @@
+.contact-container {
+}
+
+.contact-sidebar {
+  position: fixed;
+  top: 0px;
+  width: 230px;
+  background: #ffffff;
+  padding-top: 50px;
+  padding-left: 20px;
+  height: 100%;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+.sidebar-header {
+  color: rgb(0, 0, 0);
+  font-size: large;
+  font-weight: bold;
+  text-decoration: underline;
+  padding-bottom: 60px;
+  margin-left: 15px;
+}
+.sidebar-title {
+  color: rgb(0, 0, 0);
+  font-size: medium;
+  font-weight: bold;
+}
+.sidebar-section {
+  margin-bottom: 10px;
+  padding-left: 10px;
+}
+.sidebar-btn {
+  color: rgb(0, 0, 0);
+  font-style: normal;
+  font-size: medium;
+  text-decoration-line: none;
+}
+
+.contact-body {
+  margin-left: 250px;
+}
+
+@media (max-width: 830px) {
+  .contact-sidebar {
+    width: 120px;
+    padding-left: 0px;
+  }
+  .sidebar-header {
+    font-size: medium;
+  }
+  .sidebar-title {
+    font-size: small;
+  }
+  .sidebar-section {
+    margin-bottom: 20px;
+    padding-left: 5px;
+  }
+  .sidebar-btn {
+    font-size: smaller;
+  }
+
+  .contact-body {
+    margin-left: 120px;
+  }
+}
+@media (pointer: coarse) {
+  .contact-sidebar {
+    width: 120px;
+    padding-left: 0px;
+  }
+  .sidebar-header {
+    font-size: medium;
+    margin-left: 5px;
+  }
+  .sidebar-title {
+    font-size: small;
+  }
+  .sidebar-section {
+    margin-bottom: 20px;
+    padding-left: 5px;
+  }
+  .sidebar-btn {
+    font-size: smaller;
+  }
+
+  .contact-body {
+    margin-left: 120px;
+  }
+}
