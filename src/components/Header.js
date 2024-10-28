@@ -262,7 +262,7 @@ const Header = () => {
       <div className="navbtns">
         {homebtn}
         {shopbtn}
-        {ootdbtn}
+        {/* {ootdbtn} */}
         {contactusbtn}
         {orderbtn}
       </div>

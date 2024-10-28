@@ -49,9 +49,9 @@ const NavigationLayer = ({ openMenu }) => {
         <p className="navmenu-btn" onClick={ToMenu}>
           Shop
         </p>
-        <p className="navmenu-btn" onClick={ToOOTD}>
+        {/* <p className="navmenu-btn" onClick={ToOOTD}>
           Outfit highlights
-        </p>
+        </p> */}
         <p className="navmenu-btn" onClick={ToAbtUs}>
           Contact us
         </p>
