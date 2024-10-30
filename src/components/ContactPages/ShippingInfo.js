@@ -1,4 +1,5 @@
 import React from "react";
+import "../../style/ContactPages.css";
 
 const ShippingInfo = () => {
   return (
@@ -8,9 +9,32 @@ const ShippingInfo = () => {
       <div className="info-breadtext" style={{ marginTop: "50px" }}>
         At our online store, we take pride in offering worldwide shipping,
         ensuring that our products reach you no matter where you are. We partner
-        with trusted postal services like DHL, Bing Express, and other reliable
+        with trusted postal services like DHL, Bring Express, and other reliable
         international carriers to guarantee safe and timely delivery to your
         doorstep.
+      </div>
+      <div className="info-breadtext" style={{ marginTop: 20 }}>
+        <img
+          width={35}
+          height={35}
+          style={{ marginRight: 10 }}
+          src="https://drive.google.com/thumbnail?id=1dYpB-VfsnBZz0j8HLDLQ-uPjr1C4arnI&sz=w1920"
+          alt=""
+        />
+        <img
+          width={35}
+          height={35}
+          style={{ marginRight: 10 }}
+          src="https://drive.google.com/thumbnail?id=1xuBrWCHm73hdBoPT_8jL3mdNT8a9AiGe&sz=w1920"
+          alt=""
+        />
+        <img
+          width={35}
+          height={35}
+          style={{ marginRight: 10 }}
+          src="https://drive.google.com/thumbnail?id=1PaIQ_XSNimHic5IfkE0E0JaV9ZaJIb33&sz=w1920"
+          alt=""
+        />
       </div>
       <div className="info-subheader-L" style={{ marginTop: "50px" }}>
         Shipping Options:

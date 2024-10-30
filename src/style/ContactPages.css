@@ -125,6 +125,11 @@
 .info-imgsize {
   width: 100%;
 }
+.small-icons-container {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20vw;
+}
 
 @media (max-width: 850px) {
   .info-aboutus-container {
